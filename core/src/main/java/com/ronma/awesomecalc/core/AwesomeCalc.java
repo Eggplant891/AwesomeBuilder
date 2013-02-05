@@ -1,16 +1,12 @@
 package com.ronma.awesomecalc.core;
 
-import com.ronma.awesomecalc.core.input.*;
-import java.awt.Transparency;
-import static playn.core.PlayN.*;
-
+import com.ronma.awesomecalc.core.input.MouseInput;
+import com.ronma.awesomecalc.core.input.MouseState;
 import playn.core.Game;
 import playn.core.Image;
-import playn.core.ImageLayer;
-import playn.core.CanvasImage;
-import playn.core.Mouse;
-import playn.core.SurfaceLayer;
+import static playn.core.PlayN.*;
 import playn.core.Surface;
+import playn.core.SurfaceLayer;
 public class AwesomeCalc implements Game {
   Image bgImage;
   SurfaceLayer bgLayer;
