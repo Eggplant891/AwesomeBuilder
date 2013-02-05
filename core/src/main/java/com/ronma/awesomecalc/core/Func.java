@@ -1,48 +1,59 @@
 package com.ronma.awesomecalc.core;
 
+import playn.core.Image;
+import playn.core.Surface;
+
 public class Func {
-	// Conversions
-	public static float Convert_AttackSpdToSPS(float attackSpd) {
-		return (attackSpd / 60.0f);
-	}
-	
-	public static float Convert_SPSToAttackSpd(float shotsPS) {
-		return (shotsPS * 60.0f);
-	}
-	
-	public static float Convert_DPSToDPM(float dps) {
-		return (dps * 60.0f);
-	}
-	
-	public static float Convert_DPMToDPS(float dpm) {
-		return (dpm / 60.0f);
-	}
-	
-	// Getters/Calculations
-	
-	public static float Get_DamageTotalPerMinuteWithCrits(float attackSpd, int damage, float critChance, int critDamage) {
-		return (Get_DamagePerMinute(attackSpd, damage)
-				+ Get_CritDamagePerMinute(attackSpd, critChance, critDamage));
-	}
-	
-	public static float Get_CritsPerMinute(float attackSpd, float critChance) {
-		return (attackSpd * critChance);
-	}
-	
-	public static float Get_CritDamagePerMinute(float attackSpd, float critChance, float critDamage) {
-		return (Get_CritsPerMinute(attackSpd, critChance) * critDamage);
-	}
-	
-	public static float Get_DamagePerSecond(float attackSpd, int damage) {
-		return (Convert_AttackSpdToSPS(attackSpd) * damage);
-	}
-	
-	public static float Get_DamagePerMinute(float attackSpd, int damage) {
-		return (attackSpd * damage);
-	}
-	
-	// Upgrade application
-	public static float Get_UpgradedAttackSpeed(float baseAttackSpd, float upgradeStep, int numTiers) {
-		return (baseAttackSpd * (upgradeStep * numTiers));
-	}
+    public static float LengthDirX(float distance, float direction) {
+        return (float)(Math.sin(DegToRad((double)direction)) * distance);
+    }
+    public static float LengthDirY(float distance, float direction) {
+        return -((float)Math.cos(DegToRad((double)direction)) * distance);
+    }
+
+    public static double DegToRad(double degrees) {
+        return (degrees/180.0) * Math.PI;
+    }
+
+    public static double RadToDeg(double radians) {
+        return (radians/Math.PI) * 180.0;
+    }
+
+    public static double PointDirection(int x1, int y1, int x2, int y2) {
+        //Log.i("New Rocket Angle", "Val: " + RadToDeg(Math.atan2(y2 - y1, x2 - x1)));
+        double returnable = RadToDeg(Math.atan2(y2 - y1, x2 - x1)) + 90;
+        if (returnable < 0) returnable += 360;
+        else returnable %= 360;
+        return returnable;
+    }
+
+    public static double PointDistance(int x1, int y1, int x2, int y2) {
+        return Math.sqrt((x2 - x1)*(x2 - x1) + (y2 - y1)*(y2 - y1));
+    }
+
+    public static boolean CollisionRectangle(Rectangle rect1, Rectangle rect2)
+    {
+        if ((((rect1.GetX()) <= rect2.GetRight())
+        && (rect1.GetRight() >= rect2.GetX()))
+        && ((rect1.GetY() <= rect2.GetBottom())
+        && (rect1.GetBottom() >= rect2.GetY())))
+        {
+            return true;
+        }
+
+        return false;
+    }
+    
+    public static boolean CollisionPointRectangle(int x, int y, Rectangle rect) {
+        if ((x >= rect.GetX() && x <= rect.GetRight())
+        && (y >= rect.GetY()) && (y <= rect.GetBottom())) {
+            return true;
+        }
+        
+        return false;
+    }
+    
+    public static void DrawImageRect(Surface s, Image img, Rectangle src, Rectangle dst) {
+        s.drawImage(img, dst.GetX(), dst.GetY(), dst.GetWidth(), dst.GetHeight(), src.GetX(), src.GetY(), src.GetWidth(), src.GetHeight());
+    }
 }

@@ -8,9 +8,12 @@ import static playn.core.PlayN.*;
 import playn.core.Surface;
 import playn.core.SurfaceLayer;
 public class AwesomeCalc implements Game {
-  Image bgImage;
+  Image bgImage, rocket;
   SurfaceLayer bgLayer;
   Surface bgSurface;
+  public static int UpdateRate = 16;
+  
+  GameObject test;
   
   @Override
   public void init() {
@@ -19,7 +22,8 @@ public class AwesomeCalc implements Game {
     bgSurface = bgLayer.surface();
     graphics().rootLayer().add(bgLayer);
     mouse().setListener(MouseInput.GetInstance());
-    
+    rocket = assetManager().getImage("images/spr_normal_rocket.png");
+    test = new GameObject(Sprite.CreateAnimatedSprite(rocket, 4, 1, 0, 4, 10), 32, 32);
     x = 0;
   }
 
@@ -27,7 +31,8 @@ public class AwesomeCalc implements Game {
   public void paint(float alpha) {
       bgSurface.clear();
       bgSurface.fillRect(0, 0, bgLayer.width(), bgLayer.height());
-      bgSurface.drawImage(bgImage, x, y);
+      bgSurface.drawImage(bgImage, 0, 0);
+      test.Paint(bgSurface);
   }
   int x, y;
   @Override
@@ -39,10 +44,14 @@ public class AwesomeCalc implements Game {
         x = m.GetX();
         y = m.GetY();
       }
+      
+      test.SetPosition(x, y);
+      
+      test.Update(delta);
   }
 
   @Override
   public int updateRate() {
-    return 16;
+    return UpdateRate;
   }
 }
