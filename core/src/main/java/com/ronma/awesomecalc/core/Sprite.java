@@ -8,9 +8,9 @@ import playn.core.Image;
  * @author Jason
  */
 public class Sprite {
-    ImageLayer spriteImage;
+    Image spriteImage;
     
-    public Sprite() {
-        //spriteImage = new ImageLayer();
+    public Sprite(Image spriteImage) {
+    
     }
 }
