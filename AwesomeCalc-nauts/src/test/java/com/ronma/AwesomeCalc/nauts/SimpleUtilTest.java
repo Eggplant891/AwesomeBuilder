@@ -45,7 +45,7 @@ public class SimpleUtilTest
         
         for(Naut naut : nauts) {
         	assertNotNull("Naut null", naut);
-        	System.out.println(naut);
+        	System.out.println("Naut: " + naut);
         	
         	List<Ability> abilities = naut.getAbilities();
         	assertNotNull("Ability list null", abilities);
@@ -53,7 +53,7 @@ public class SimpleUtilTest
         	
         	for (Ability ability : abilities) {
         		assertNotNull("Ability null", ability);
-        		System.out.println(ability);
+        		System.out.println("Ability: " + ability);
         		
         		List<Upgrade> upgrades = ability.getUpgrades();
         		assertNotNull("Upgrade list null", upgrades);
@@ -61,7 +61,7 @@ public class SimpleUtilTest
             	
             	for (Upgrade upgrade : upgrades) {
             		assertNotNull("Upgrade null", upgrade);
-            		System.out.println(upgrade);
+            		System.out.println("Upgrade: " + upgrade);
 				}
 			}
         	
