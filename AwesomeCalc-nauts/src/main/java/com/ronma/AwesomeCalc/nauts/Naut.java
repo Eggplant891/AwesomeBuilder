@@ -2,58 +2,88 @@ package com.ronma.AwesomeCalc.nauts;
 
 import java.util.ArrayList;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name = "NAUT")
 public class Naut {
 	
+	@Id
+	@Column(name = "NAUT_ID")
+	@GeneratedValue
+	private Integer id;
+	
+	@Column(name = "NAUT_NAME")
 	private String name;
-	private int solarStart;
-	private int solarPerMin;
-	private int health;
+	
+	@Column(name = "NAUT_SOLAR_START")
+	private Integer solarStart;
+	
+	@Column(name = "NAUT_SOLAR_PER_MIN")
+	private Integer solarPerMin;
+	
+	@Column(name = "NAUT_HEALTH")
+	private Integer health;
+	
+	@Column(name = "NAUT_MOVEMENT")
 	private double movement;
+	
+	@Column(name = "NAUT_HEIGHT")
 	private double height;
+	
+	@OneToMany
+	@Column(name = "ABILITY_ID")
 	private ArrayList<Ability> abilities;
-	
-	public Naut(String name) {
-		this.name = name;
-		solarStart = 200;
-		solarPerMin = 30;
-		abilities = new ArrayList<Ability>();
-	}
-	
-	public void setName(String name){
-		this.name = name;
-	}
-	
-	public String getName(){
-		return name;
-	}
 
 	@Override
 	public String toString() {
-		return getName();
+		return name;
+	}
+	
+	public Integer getId() {
+		return id;
 	}
 
-	public int getHealth() {
-		return health;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public void setHealth(int health) {
-		this.health = health;
+	public String getName() {
+		return name;
 	}
 
-	public int getSolarPerMin() {
-		return solarPerMin;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public void setSolarPerMin(int solarPerMin) {
-		this.solarPerMin = solarPerMin;
-	}
-
-	public int getSolarStart() {
+	public Integer getSolarStart() {
 		return solarStart;
 	}
 
-	public void setSolarStart(int solarStart) {
+	public void setSolarStart(Integer solarStart) {
 		this.solarStart = solarStart;
+	}
+
+	public Integer getSolarPerMin() {
+		return solarPerMin;
+	}
+
+	public void setSolarPerMin(Integer solarPerMin) {
+		this.solarPerMin = solarPerMin;
+	}
+
+	public Integer getHealth() {
+		return health;
+	}
+
+	public void setHealth(Integer health) {
+		this.health = health;
 	}
 
 	public double getMovement() {
@@ -78,10 +108,6 @@ public class Naut {
 
 	public void setAbilities(ArrayList<Ability> abilities) {
 		this.abilities = abilities;
-	}
-	
-	public void addAbility(Ability a){
-		abilities.add(a);
 	}
 	
 }

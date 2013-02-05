@@ -1,5 +1,6 @@
 package com.ronma.AwesomeCalc.nauts;
 
+import junit.framework.Assert;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -29,10 +30,11 @@ public class AppTest
     }
 
     /**
-     * Rigourous Test :-)
+     * Some basics :-)
      */
     public void testApp()
     {
-        assertTrue( true );
+        assertNotNull(new Naut());
+        
     }
 }
