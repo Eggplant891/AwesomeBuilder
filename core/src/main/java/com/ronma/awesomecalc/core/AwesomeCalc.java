@@ -7,13 +7,16 @@ import playn.core.Image;
 import static playn.core.PlayN.*;
 import playn.core.Surface;
 import playn.core.SurfaceLayer;
+import playn.core.AssetWatcher;
+
 public class AwesomeCalc implements Game {
   Image bgImage, rocket;
   SurfaceLayer bgLayer;
   Surface bgSurface;
   public static int UpdateRate = 16;
-  
+  AssetWatcher watcher;
   GameObject test;
+  public boolean watcherFinished;
   
   @Override
   public void init() {
@@ -23,12 +26,34 @@ public class AwesomeCalc implements Game {
     graphics().rootLayer().add(bgLayer);
     mouse().setListener(MouseInput.GetInstance());
     rocket = assetManager().getImage("images/spr_normal_rocket.png");
+    watcherFinished = false;
+    watcher = new AssetWatcher(new AssetWatcher.Listener() {
+
+            @Override
+            public void done() {
+                InitApp();
+                watcherFinished = true;
+            }
+
+            @Override
+            public void error(Throwable e) {
+                throw new UnsupportedOperationException("Not supported yet.");
+            }
+        });
+    
+    watcher.add(bgImage);
+    watcher.add(rocket);
+    watcher.start();
+  }
+  
+  public void InitApp() {
     test = new GameObject(Sprite.CreateAnimatedSprite(rocket, 4, 1, 0, 4, 10), 32, 32);
     x = 0;
   }
 
   @Override
   public void paint(float alpha) {
+      if (!watcherFinished) return;
       bgSurface.clear();
       bgSurface.fillRect(0, 0, bgLayer.width(), bgLayer.height());
       bgSurface.drawImage(bgImage, 0, 0);
@@ -37,6 +62,7 @@ public class AwesomeCalc implements Game {
   int x, y;
   @Override
   public void update(float delta) {
+      if (!watcherFinished) return;
       MouseState m = MouseInput.GetInstance().PollInput();
       if (m.IsLeftButtonPressed()) x += 10;
       if (m.IsLeftButtonReleased()) y += 10;
