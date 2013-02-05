@@ -1,4 +1,11 @@
 #################
+## AwesomeBuilder
+#################
+/core/target/
+/html/target/
+/AwesomeCalc-nauts/target/
+
+#################
 ## Eclipse
 #################
 
@@ -164,5 +171,3 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
-/core/target/
-/html/target/
