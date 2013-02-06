@@ -16,7 +16,7 @@ public class AwesomeCalc implements Game {
   public static int UpdateRate = 16;
   AssetWatcher watcher;
   GameObject test;
-  ToggleButton testBtn;
+  ToggleButton [] btnRow;
   public boolean watcherFinished;
   
   @Override
@@ -48,10 +48,26 @@ public class AwesomeCalc implements Game {
     watcher.add(button);
     watcher.start();
   }
-  
+  public int numSelected = 0;
   public void InitApp() {
-    test = new GameObject(Sprite.CreateAnimatedSprite(rocket, 4, 1, 0, 4, 10), 32, 32);
-    testBtn = new ToggleButton(button, 50, 50, false);
+    //test = new GameObject(Sprite.CreateAnimatedSprite(rocket, 4, 1, 0, 4, 10), 32, 32);
+    btnRow = new ToggleButton[6];
+    for (int i = 0; i < 6; i++) {
+        ToggleButton testBtn = new ToggleButton(button, 50 + i * 72, 50, false) {
+            @Override
+            public void Clicked() {
+                if (numSelected < 3 && IsSwitchedOff()) {
+                    Toggle();
+                    numSelected++;
+                }
+                else if (IsSwitchedOn()) {
+                    Toggle();
+                    if (numSelected > 0) numSelected--;
+                }
+            }
+        };
+        btnRow[i] = testBtn;
+    }
     x = 0;
   }
 
@@ -61,8 +77,10 @@ public class AwesomeCalc implements Game {
       bgSurface.clear();
       bgSurface.fillRect(0, 0, bgLayer.width(), bgLayer.height());
       bgSurface.drawImage(bgImage, 0, 0);
-      test.Paint(bgSurface);
-      testBtn.Paint(bgSurface);
+      //test.Paint(bgSurface);
+      for (int i = 0; i < 6; i++) {
+        btnRow[i].Paint(bgSurface);
+      }
   }
   int x, y;
   @Override
@@ -76,10 +94,12 @@ public class AwesomeCalc implements Game {
         y = m.GetY();
       }
       
-      test.SetPosition(x, y);
+      //test.SetPosition(x, y);
       
-      test.Update(delta);
-      testBtn.Update(delta);
+      //test.Update(delta);
+      for (int i = 0; i < 6; i++) {
+        btnRow[i].Update(delta);
+      }
   }
 
   @Override

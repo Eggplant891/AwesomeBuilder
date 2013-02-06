@@ -6,8 +6,6 @@ import com.sun.org.omg.SendingContext._CodeBaseImplBase;
 import playn.core.Image;
 import playn.core.Surface;
 public class ToggleButton extends GameObject {
-    private MouseState _mouse;
-    private MouseInput mInput = MouseInput.GetInstance();
     private boolean _state = false;
     
     public ToggleButton(Image img, int x, int y, boolean startsOn) {
@@ -19,20 +17,28 @@ public class ToggleButton extends GameObject {
         _state = !_state;
     }
     
+    public boolean IsSwitchedOff() {
+        return !_state;
+    }
+    
     public boolean IsSwitchedOn() {
         return _state;
+    }
+    
+    public void Clicked() {
+        Toggle();
     }
     
     @Override
     public void Update(float delta) {
         super.Update(delta);
-        _mouse = mInput.CurrentInput();
         
-        if (_collisionBox.IntersectsWithPoint(_mouse.GetX(), _mouse.GetY())) {
+        if (_mouse.IsInBounds(_collisionBox)) {
             if (_mouse.IsLeftButtonReleased()) {
-                Toggle();
+                Clicked();
             }
-            else if (_mouse.IsLeftButtonHeld()) {
+            
+            if (_mouse.IsLeftButtonHeld()) {
                 _sprite.SetCurrentFrame(2);
             }
             else {

@@ -60,7 +60,6 @@ public class Sprite {
 		newSprite._numFrames = numFrames;
 		newSprite._isAnimated = true;
 		newSprite.SetFrameSize();
-		newSprite.SetOriginToCentre();
 		newSprite.SetCurrentFrameRectPos(startFrame);
 		
 		return newSprite;
@@ -78,8 +77,7 @@ public class Sprite {
         }
 	
 	public void SetOriginToCentre() {
-		_originX = _frameWidth/2;
-		_originY = _frameHeight/2;
+                SetOrigin((int)(_frameWidth/2.0), (int)(_frameHeight/2.0));
 	}
 	
 	//Calculates the frame delta to meet the frame rate specified
@@ -124,6 +122,7 @@ public class Sprite {
         public void SetCurrentFrame(int frame) {
             _currentFrame = frame;
             _frameDelta = 0;
+            SetCurrentFrameRectPos(frame);
         }
 
 	public void Draw(Surface s, int x, int y, float xScale, float yScale) {
