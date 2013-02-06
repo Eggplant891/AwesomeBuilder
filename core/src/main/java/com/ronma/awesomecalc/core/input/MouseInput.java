@@ -6,6 +6,8 @@ import playn.core.Mouse;
 public class MouseInput implements Mouse.Listener {
 	// Singleton Stuff
 	private static MouseInput me = null;
+        private static MouseState state = null;
+        
 	public static MouseInput GetInstance() {
 		if (me == null) me = new MouseInput();
 		return me;
@@ -34,14 +36,20 @@ public class MouseInput implements Mouse.Listener {
 	public synchronized int GetY() { return _mouseY; }
 	
 	public synchronized MouseState PollInput() {
-		return new MouseState(
+		state = new MouseState(
 				buttons[MOUSE_LEFT].PollInput(),
 				buttons[MOUSE_MIDDLE].PollInput(),
 				buttons[MOUSE_RIGHT].PollInput(),
 				GetX(),
 				GetY()
 				);
+                return state;
 	}
+        
+        public MouseState CurrentInput() {
+            return state;
+        }
+        
 	@Override
 	public void onMouseDown(Mouse.ButtonEvent e) {
 		if (e.button() == Mouse.BUTTON_LEFT) {

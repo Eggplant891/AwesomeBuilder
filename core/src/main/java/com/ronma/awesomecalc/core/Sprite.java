@@ -72,6 +72,10 @@ public class Sprite {
 	}
 	public int GetXOrigin() { return _originX; }
 	public int GetYOrigin() { return _originY; }
+        
+        public Rectangle GetCollisionRectangle() {
+            return new Rectangle(-_originX, -_originY, _frameWidth -_originX, _frameHeight -_originY);
+        }
 	
 	public void SetOriginToCentre() {
 		_originX = _frameWidth/2;
@@ -116,6 +120,11 @@ public class Sprite {
 		_frameRate = frameRate;
 		_frameDelta = CalculateFrameDelta(frameRate);
 	}
+        
+        public void SetCurrentFrame(int frame) {
+            _currentFrame = frame;
+            _frameDelta = 0;
+        }
 
 	public void Draw(Surface s, int x, int y, float xScale, float yScale) {
 		// Update drawing rectangle to fit new position and scale parameters.

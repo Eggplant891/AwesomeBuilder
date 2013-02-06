@@ -39,4 +39,8 @@ public class Rectangle {
     public boolean IntersectsWith(Rectangle r) {
         return Func.CollisionRectangle(this, r);
     }
+    
+    public boolean IntersectsWithPoint(int x, int y) {
+        return Func.CollisionPointRectangle(x, y, this);
+    }
 }

@@ -3,7 +3,7 @@ package com.ronma.awesomecalc.core;
 import playn.core.Image;
 import playn.core.Surface;
 
-public class Func {
+public class Func {    
     public static float LengthDirX(float distance, float direction) {
         return (float)(Math.sin(DegToRad((double)direction)) * distance);
     }

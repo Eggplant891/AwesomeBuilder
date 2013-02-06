@@ -10,12 +10,13 @@ import playn.core.SurfaceLayer;
 import playn.core.AssetWatcher;
 
 public class AwesomeCalc implements Game {
-  Image bgImage, rocket;
+  public static Image bgImage, rocket, button;
   SurfaceLayer bgLayer;
   Surface bgSurface;
   public static int UpdateRate = 16;
   AssetWatcher watcher;
   GameObject test;
+  ToggleButton testBtn;
   public boolean watcherFinished;
   
   @Override
@@ -26,6 +27,7 @@ public class AwesomeCalc implements Game {
     graphics().rootLayer().add(bgLayer);
     mouse().setListener(MouseInput.GetInstance());
     rocket = assetManager().getImage("images/spr_normal_rocket.png");
+    button = assetManager().getImage("images/buttonTest.png");
     watcherFinished = false;
     watcher = new AssetWatcher(new AssetWatcher.Listener() {
 
@@ -37,17 +39,19 @@ public class AwesomeCalc implements Game {
 
             @Override
             public void error(Throwable e) {
-                throw new UnsupportedOperationException("Not supported yet.");
+                System.out.println("Failed to load all assets. ;(");
             }
         });
     
     watcher.add(bgImage);
     watcher.add(rocket);
+    watcher.add(button);
     watcher.start();
   }
   
   public void InitApp() {
     test = new GameObject(Sprite.CreateAnimatedSprite(rocket, 4, 1, 0, 4, 10), 32, 32);
+    testBtn = new ToggleButton(button, 50, 50, false);
     x = 0;
   }
 
@@ -58,6 +62,7 @@ public class AwesomeCalc implements Game {
       bgSurface.fillRect(0, 0, bgLayer.width(), bgLayer.height());
       bgSurface.drawImage(bgImage, 0, 0);
       test.Paint(bgSurface);
+      testBtn.Paint(bgSurface);
   }
   int x, y;
   @Override
@@ -74,6 +79,7 @@ public class AwesomeCalc implements Game {
       test.SetPosition(x, y);
       
       test.Update(delta);
+      testBtn.Update(delta);
   }
 
   @Override
