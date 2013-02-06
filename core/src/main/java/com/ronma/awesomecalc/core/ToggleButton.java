@@ -1,8 +1,4 @@
 package com.ronma.awesomecalc.core;
-
-import com.ronma.awesomecalc.core.input.MouseInput;
-import com.ronma.awesomecalc.core.input.MouseState;
-import com.sun.org.omg.SendingContext._CodeBaseImplBase;
 import playn.core.Image;
 import playn.core.Surface;
 public class ToggleButton extends GameObject {
