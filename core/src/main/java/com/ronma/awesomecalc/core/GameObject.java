@@ -47,7 +47,7 @@ public class GameObject {
     }
     
     public void Paint(Surface g) {
-        g.drawImage(AwesomeCalc.bgImage, _collisionBox.GetX(), _collisionBox.GetY(), _collisionBox.GetWidth(), _collisionBox.GetHeight());
+        //g.drawImage(AwesomeCalc.bgImage, _collisionBox.GetX(), _collisionBox.GetY(), _collisionBox.GetWidth(), _collisionBox.GetHeight());
         _sprite.Draw(g, _x, _y, 1.0f, 1.0f);
     }
     
