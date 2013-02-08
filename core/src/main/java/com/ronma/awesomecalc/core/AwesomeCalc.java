@@ -1,6 +1,9 @@
 package com.ronma.awesomecalc.core;
 
 //import java.util.ArrayList;
+import com.ronma.awesomecalc.core.loadout.LoadoutToggleButton;
+import com.ronma.awesomecalc.core.loadout.*;
+
 import playn.core.Game;
 import playn.core.Image;
 import static playn.core.PlayN.*;
@@ -21,9 +24,9 @@ public class AwesomeCalc implements Game {
   Surface bgSurface;
   public static int UpdateRate = 16;
   AssetWatcher watcher;
-  GameObject test;
-  LoadoutToggleButton [] btnRow;
   public boolean watcherFinished;
+  
+  public ArrayList<LoadoutRow> l_row;
   
   public FroggyTest f_test; 
   
@@ -31,7 +34,9 @@ public class AwesomeCalc implements Game {
   public void init() {
     Global.m_assetManager = assetManager();
     bgImage = Global.m_assetManager.getImage("images/bg.png");
-    bgLayer = graphics().createSurfaceLayer(640,480);
+    
+    graphics().setSize(800, 600);
+    bgLayer = graphics().createSurfaceLayer(800,600);
     bgSurface = bgLayer.surface();
     graphics().rootLayer().add(bgLayer);
     mouse().setListener(MouseInput.GetInstance());
@@ -60,28 +65,15 @@ public class AwesomeCalc implements Game {
     watcher.add(bgImage);
     watcher.add(button);
     watcher.start();
-  }
-  public int numSelected = 0;
-  public void InitApp() {
-    btnRow = new LoadoutToggleButton[6];
-    for (int i = 0; i < 6; i++) {
-        LoadoutToggleButton testBtn = new LoadoutToggleButton(f_test.res.GetAutoAttackSlot(i+1), 69 + i * 64, 50, false) {
-            @Override
-            public void Clicked() {
-                if (numSelected < 3 && IsSwitchedOff()) {
-                    Toggle();
-                    numSelected++;
-                }
-                else if (IsSwitchedOn()) {
-                    Toggle();
-                    if (numSelected > 0) numSelected--;
-                }
-            }
-        };
-        btnRow[i] = testBtn;
     }
-    x = 0;
-  }
+    public int numSelected = 0;
+    public void InitApp() {
+        l_row = new ArrayList<LoadoutRow>();
+        l_row.add(new LoadoutRow(LoadoutRowType.ABILITY1, f_test.res));
+        l_row.add(new LoadoutRow(LoadoutRowType.ABILITY2, f_test.res));
+        l_row.add(new LoadoutRow(LoadoutRowType.AUTO_ATTACK, f_test.res));
+        l_row.add(new LoadoutRow(LoadoutRowType.UTILITY, f_test.res));
+    }
 
 @Override
 public void paint(float alpha) {
@@ -89,22 +81,11 @@ public void paint(float alpha) {
     bgSurface.clear();
     bgSurface.fillRect(0, 0, bgLayer.width(), bgLayer.height());
     bgSurface.drawImage(bgImage, 0, 0);
-    Image img = f_test.res.GetAutoAttackSlot(0);
-    if (img != null) {
-        bgSurface.drawImage(img, 5, 50);
-    }
-    for (int i = 0; i < 6; i++) {
-        btnRow[i].Paint(bgSurface);
-    }
-    for (int i = 0; i < 8; i++) {
-        img = f_test.res.GetAbility1Slot(i);
-        if (img != null) {
-        //bgSurface.drawImage(img, i * 64, i * 64);
-        }
-        img = f_test.res.GetAutoAttackSlot(i);
-        if (img != null) {
-            //bgSurface.drawImage(img, i * 64, i * 64 + 64);
-        }
+    
+    if (f_test.res.GetPortrait() != null) bgSurface.drawImage(f_test.res.GetPortrait(), 0, 0);
+    
+    for (LoadoutRow l : l_row) {
+        l.Paint(bgSurface);
     }
 }
 
@@ -118,12 +99,9 @@ int x, y;
         y = m.GetY();
       }
       
-      //test.SetPosition(x, y);
-      
-      //test.Update(delta);
-      for (int i = 0; i < 6; i++) {
-        btnRow[i].Update(delta);
-      }
+      for (LoadoutRow l : l_row) {
+        l.Update(delta);
+    }
   }
 
   @Override
