@@ -5,9 +5,9 @@ import playn.core.AssetWatcher;
 import playn.core.Image;
 import playn.core.Surface;
 
-public class Screen {
-    AssetWatcher watcher;
-    boolean watcherFinished = false;
+public abstract class Screen {
+    protected AssetWatcher watcher;
+    protected boolean watcherFinished = false;
     
     public Screen() {
         watcher = new AssetWatcher(new AssetWatcher.Listener() {
@@ -25,7 +25,7 @@ public class Screen {
         });
     }
     
-    public void InitScreen() {}
+    public abstract void InitScreen();
     public void Update(float delta) { } 
     public void Paint(Surface g) {
         if (!watcherFinished) {

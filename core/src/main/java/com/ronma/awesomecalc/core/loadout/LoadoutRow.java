@@ -10,12 +10,14 @@ public class LoadoutRow {
     private int itemsSelected;
     private LoadoutRowType _type;
     
-    private final int xOffset = 192 + 5;
-    private final int yOffset = 50;
-    private final int xSpacing = 5;
-    private final int ySpacing = 10;
+    public static Image rowBG;
     
-    private final int iconPadding = 10;
+    private final int xOffset = 16;
+    private final int yOffset = 90 + 16;
+    private final int xSpacing = 4;
+    private final int ySpacing = 16;
+    
+    private final int iconPadding = 8;
     
     public LoadoutRow(LoadoutRowType type, NautResources res) {
         itemsSelected = 0;
@@ -48,6 +50,7 @@ public class LoadoutRow {
     }
     
     public void Paint(Surface g) {
+        g.drawImage(rowBG, xOffset - 4, yOffset + (_type.ordinal() * (64 + ySpacing)) - 3);
         g.drawImage(rowIcon, xOffset, yOffset + (_type.ordinal() * (64 + ySpacing)));
         for (int i = 0; i < NautResources.NumSlotsPerAbility; i++) {
             btns[i].Paint(g);

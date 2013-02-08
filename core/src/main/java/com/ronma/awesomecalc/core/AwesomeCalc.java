@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import com.ronma.awesomecalc.core.input.MouseInput;
 import com.ronma.awesomecalc.core.input.MouseState;
 import com.ronma.awesomecalc.core.loadout.FroggyTest;
+import playn.core.Font;
 
 public class AwesomeCalc implements Game {
   public static Image bgImage, button;
@@ -28,19 +29,22 @@ public class AwesomeCalc implements Game {
   
   public ArrayList<LoadoutRow> l_row;
   
-  public FroggyTest f_test; 
+  public LoadoutScreen froggyScreen;
   
   @Override
   public void init() {
     Global.m_assetManager = assetManager();
-    bgImage = Global.m_assetManager.getImage("images/bg.png");
+    Global.m_graphics = graphics();
+    Fnt.Init();
     
-    graphics().setSize(800, 600);
+    bgImage = Global.m_assetManager.getImage("images/bg.png");
+    LoadoutRow.rowBG = Global.m_assetManager.getImage("images/spr_loadoutRowBG.png");
+    Global.m_graphics.setSize(800, 600);
     bgLayer = graphics().createSurfaceLayer(800,600);
     bgSurface = bgLayer.surface();
-    graphics().rootLayer().add(bgLayer);
+    Global.m_graphics.rootLayer().add(bgLayer);
     mouse().setListener(MouseInput.GetInstance());
-    button = Global.m_assetManager.getImage("images/spr_froggyG_autoAttack_piranhaCartridges.png");
+    
     watcherFinished = false;
     watcher = new AssetWatcher(new AssetWatcher.Listener() {
 
@@ -55,24 +59,17 @@ public class AwesomeCalc implements Game {
                 System.out.println("Failed to load all assets. ;(");
             }
         });
-    f_test = new FroggyTest();
-    f_test.LoadResources();
-    ArrayList<Image> fTestImages = f_test.res.GetFullResourceList();
-    
-    for (Image img : fTestImages) {
-        watcher.add(img);
-    }    
     watcher.add(bgImage);
-    watcher.add(button);
     watcher.start();
     }
     public int numSelected = 0;
     public void InitApp() {
-        l_row = new ArrayList<LoadoutRow>();
+        froggyScreen = new LoadoutScreen(new FroggyTest());
+        /*l_row = new ArrayList<LoadoutRow>();
         l_row.add(new LoadoutRow(LoadoutRowType.ABILITY1, f_test.res));
         l_row.add(new LoadoutRow(LoadoutRowType.ABILITY2, f_test.res));
         l_row.add(new LoadoutRow(LoadoutRowType.AUTO_ATTACK, f_test.res));
-        l_row.add(new LoadoutRow(LoadoutRowType.UTILITY, f_test.res));
+        l_row.add(new LoadoutRow(LoadoutRowType.UTILITY, f_test.res));*/
     }
 
 @Override
@@ -82,30 +79,25 @@ public void paint(float alpha) {
     bgSurface.fillRect(0, 0, bgLayer.width(), bgLayer.height());
     bgSurface.drawImage(bgImage, 0, 0);
     
-    if (f_test.res.GetPortrait() != null) bgSurface.drawImage(f_test.res.GetPortrait(), 0, 0);
-    
-    for (LoadoutRow l : l_row) {
-        l.Paint(bgSurface);
-    }
+    froggyScreen.Paint(bgSurface);
+    Fnt.DrawString(bgSurface, Fnt.Fnt_BigHeading, "Froggy G", 100, 50);
 }
 
-int x, y;
-  @Override
-  public void update(float delta) {
-      if (!watcherFinished) return;
-      MouseState m = MouseInput.GetInstance().PollInput();
-      if (m.IsLeftButtonHeld()) {
-        x = m.GetX();
-        y = m.GetY();
-      }
-      
-      for (LoadoutRow l : l_row) {
-        l.Update(delta);
+    int x, y;
+    @Override
+    public void update(float delta) {
+        if (!watcherFinished) return;
+        MouseState m = MouseInput.GetInstance().PollInput();
+        if (m.IsLeftButtonHeld()) {
+            x = m.GetX();
+            y = m.GetY();
+        }
+        
+        froggyScreen.Update(delta);
     }
-  }
 
-  @Override
-  public int updateRate() {
-    return UpdateRate;
-  }
+    @Override
+    public int updateRate() {
+        return UpdateRate;
+    }
 }
