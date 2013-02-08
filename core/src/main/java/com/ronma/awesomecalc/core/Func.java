@@ -33,9 +33,9 @@ public class Func {
 
     public static boolean CollisionRectangle(Rectangle rect1, Rectangle rect2)
     {
-        if ((((rect1.GetX()) <= rect2.GetRight())
+        if ((((rect1.GetX()) < rect2.GetRight())
         && (rect1.GetRight() >= rect2.GetX()))
-        && ((rect1.GetY() <= rect2.GetBottom())
+        && ((rect1.GetY() < rect2.GetBottom())
         && (rect1.GetBottom() >= rect2.GetY())))
         {
             return true;
@@ -45,8 +45,8 @@ public class Func {
     }
     
     public static boolean CollisionPointRectangle(int x, int y, Rectangle rect) {
-        if ((x >= rect.GetX() && x <= rect.GetRight())
-        && (y >= rect.GetY()) && (y <= rect.GetBottom())) {
+        if ((x >= rect.GetX() && x < rect.GetRight())
+        && (y >= rect.GetY()) && (y < rect.GetBottom())) {
             return true;
         }
         
