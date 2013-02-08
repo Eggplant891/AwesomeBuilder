@@ -1,4 +1,6 @@
-package com.ronma.awesomecalc.core;
+package com.ronma.awesomecalc.core.loadout;
+import com.ronma.awesomecalc.core.GameObject;
+import com.ronma.awesomecalc.core.Sprite;
 import playn.core.Image;
 import playn.core.Surface;
 public class LoadoutToggleButton extends GameObject {
