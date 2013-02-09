@@ -56,4 +56,12 @@ public class GameObject {
         _y = y;
         _collisionBox.SetPosition(_x + _spriteBox.GetX(), _y + _spriteBox.GetY());
     }
+    
+    public int GetX() {
+        return _x;
+    }
+    
+    public int GetY() {
+        return _y;
+    }
 }

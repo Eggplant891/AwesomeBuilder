@@ -25,11 +25,16 @@ public class ToggleButton extends GameObject {
         Toggle();
     }
     
+    public void MouseHover() {
+        
+    }
+    
     @Override
     public void Update(float delta) {
         super.Update(delta);
         
         if (_mouse.IsInBounds(_collisionBox)) {
+            MouseHover();
             if (_mouse.IsLeftButtonReleased()) {
                 Clicked();
             }

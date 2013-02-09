@@ -5,10 +5,15 @@ import playn.core.Image;
 import playn.core.Surface;
 public class LoadoutToggleButton extends GameObject {
     private boolean _state = false;
+    private int _id;
     
-    public LoadoutToggleButton(Image img, int x, int y, boolean startsOn) {
+    public LoadoutToggleButton(Image img, int id, int x, int y, boolean startsOn) {
         super(Sprite.CreateAnimatedSprite(img, 2, 1, 0, 2, 0), x, y);
         _state = startsOn;
+    }
+    
+    public int GetSlotID() {
+        return _id;
     }
     
     public void Toggle() {

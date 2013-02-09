@@ -4,13 +4,13 @@ import com.ronma.awesomecalc.core.Global;
 
 public class NautResDefinitions {
     public NautResources res;
-    protected String [] _ability1;
+    protected LoadoutItemDefinition [] _ability1;
     protected String _ability1Icon;
-    protected String [] _ability2;
+    protected LoadoutItemDefinition [] _ability2;
     protected String _ability2Icon;
-    protected String [] _autoAttack;
+    protected LoadoutItemDefinition [] _autoAttack;
     protected String _autoAttackIcon;
-    protected String [] _utility;
+    protected LoadoutItemDefinition [] _utility;
     protected String _utilityIcon;
     protected String _fullPortrait;
     protected String _iconPortrait;
@@ -18,6 +18,24 @@ public class NautResDefinitions {
     
     public NautResDefinitions() {
         res = new NautResources();        
+    }
+    
+    public LoadoutItemDefinition GetItemDefinition(LoadoutRowType type, int col) {
+        if (col < 0 || col > NautResources.NumSlotsPerAbility) return null;
+        switch (type) {
+            case ABILITY1:
+                return _ability1[col];
+                
+            case ABILITY2:
+                return _ability2[col];
+            
+            case AUTO_ATTACK:
+                return _autoAttack[col];
+            
+            case UTILITY:
+                return _utility[col];
+        }
+        return null;
     }
     
     public void LoadResources() {
@@ -30,10 +48,14 @@ public class NautResDefinitions {
         res.SetUtilityIcon(Global.m_assetManager.getImage("images/" + _nautNameCode + "/" + _utilityIcon));
         
         for (int i = 0; i < NautResources.NumSlotsPerAbility; i ++) {
-            res.AddAbility1Slot(Global.m_assetManager.getImage("images/" + _nautNameCode + "/" + _ability1[i]));
-            res.AddAbility2Slot(Global.m_assetManager.getImage("images/" + _nautNameCode + "/" + _ability2[i]));                
-            res.AddAutoAttackSlot(Global.m_assetManager.getImage("images/" + _nautNameCode + "/" + _autoAttack[i]));
-            res.AddUtilitySlot(Global.m_assetManager.getImage("images/" + _nautNameCode + "/" + _utility[i]));
+            res.AddSlot(LoadoutRowType.ABILITY1, _ability1[i].LoadImage());
+            res.AddSlot(LoadoutRowType.ABILITY2, _ability2[i].LoadImage());                
+            res.AddSlot(LoadoutRowType.AUTO_ATTACK, _autoAttack[i].LoadImage());
+            res.AddSlot(LoadoutRowType.UTILITY, _utility[i].LoadImage());
+            System.out.println("Loaded resource: " + _ability1[i].GetImagePath());
+            System.out.println("Loaded resource: " + _ability2[i].GetImagePath());
+            System.out.println("Loaded resource: " + _autoAttack[i].GetImagePath());
+            System.out.println("Loaded resource: " + _utility[i].GetImagePath());
         }
     }
 }
