@@ -1,6 +1,11 @@
 package com.ronma.AwesomeCalc.nauts;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
+
+import org.json.simple.parser.ParseException;
 
 import com.ronma.AwesomeCalc.nauts.util.SimpleUtil;
 
@@ -34,12 +39,18 @@ public class SimpleUtilTest
 
     /**
      * Some basics :-)
+     * @throws ParseException 
+     * @throws IOException 
+     * @throws FileNotFoundException 
+     * @throws URISyntaxException 
      */
     public void testApp()
     {
         assertNotNull(new Naut());
         
-        List<Naut> nauts = SimpleUtil.getNautsSimple();
+        SimpleUtil su = new SimpleUtil();
+        
+        List<Naut> nauts = su.getNautsSimple();
         assertNotNull("Naut list null", nauts);
         assertFalse("Naut list empty", nauts.isEmpty());
         
