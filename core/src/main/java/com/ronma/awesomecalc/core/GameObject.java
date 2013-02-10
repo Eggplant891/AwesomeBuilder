@@ -64,4 +64,8 @@ public class GameObject {
     public int GetY() {
         return _y;
     }
+    
+    public Sprite GetSprite() {
+        return _sprite;
+    }
 }

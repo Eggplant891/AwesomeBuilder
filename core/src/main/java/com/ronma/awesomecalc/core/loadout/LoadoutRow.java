@@ -3,11 +3,13 @@ package com.ronma.awesomecalc.core.loadout;
 import playn.core.Image;
 import com.ronma.awesomecalc.core.loadout.NautResources;
 import playn.core.Surface;
+import java.util.ArrayList;
 
 public class LoadoutRow {
     private LoadoutItem [] btns;
     private Image rowIcon;
     private int itemsSelected;
+    private ArrayList<LoadoutItem> selectedItems;
     private LoadoutRowType _type;
     
     public static Image rowBG;
@@ -23,6 +25,7 @@ public class LoadoutRow {
     
     public LoadoutRow(LoadoutRowType type, NautResDefinitions resDef) {
         itemsSelected = 0;
+        selectedItems = new ArrayList<LoadoutItem>();
         btns = new LoadoutItem[NautResources.NumSlotsPerAbility];
         rowIcon = resDef.res.GetAbilityIcon(type);
         _type = type;
@@ -32,13 +35,13 @@ public class LoadoutRow {
                     yOffset + (type.ordinal() * (64 + ySpacing))) {
                 @Override
                 public void Clicked() {
-                    if (itemsSelected < 3 && IsSwitchedOff()) {
+                    if (selectedItems.size() < 3 && IsSwitchedOff()) {
                         Toggle();
-                        itemsSelected++;
+                        UpdateSelectedItems();
                     }
                     else if (IsSwitchedOn()) {
                         Toggle();
-                        if (itemsSelected > 0) itemsSelected--;
+                        UpdateSelectedItems();
                     }
                 }
                 
@@ -47,6 +50,18 @@ public class LoadoutRow {
                     rowSelection = this;
                 }
             };
+        }
+    }
+    
+    public void UpdateSelectedItems() {
+        selectedItems.clear();
+        for (int i = 0; i < NautResources.NumSlotsPerAbility; i++) {
+            if (btns[i] != null) {
+                if (btns[i].IsSwitchedOn()) {
+                    if (selectedItems.size() < 3)
+                        selectedItems.add(btns[i]);
+                }
+            }
         }
     }
     
@@ -66,6 +81,11 @@ public class LoadoutRow {
         g.drawImage(rowIcon, xOffset, yOffset + (_type.ordinal() * (64 + ySpacing)));
         for (int i = 0; i < NautResources.NumSlotsPerAbility; i++) {
             btns[i].Paint(g);
+        }
+        int i = 0;
+        for (LoadoutItem l : selectedItems) {
+            l.GetSprite().Draw(g, 550 + 64 * i, yOffset + (_type.ordinal() * 64), 1.0f, 1.0f);
+            i++;
         }
     }
 }
