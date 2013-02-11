@@ -50,12 +50,19 @@ public class SimpleUtilTest
     {
         assertNotNull(new Naut());
         
-        SimpleUtil su = new SimpleUtil();
+        jsonTest();
+    }
+    
+    /**
+     * test the json read in {@link SimpleUtil}
+     */
+    private void jsonTest(){
+    	//read the json
         BufferedReader jsonReader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/naut.json")));
         
+        SimpleUtil su = new SimpleUtil();
         List<Naut> nauts = su.getNautsFromJSON(jsonReader);
         assertNotNull("Naut list null", nauts);
-        assertFalse("Naut list empty", nauts.isEmpty());
         
         for(Naut naut : nauts) {
         	assertNotNull("Naut null", naut);
@@ -81,5 +88,7 @@ public class SimpleUtilTest
 			}
         	System.out.println();
 		}
+        
+        assertFalse("Naut list empty", nauts.isEmpty());
     }
 }

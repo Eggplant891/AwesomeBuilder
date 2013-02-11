@@ -145,5 +145,54 @@
                 ]
             }
         ]
+    },
+    {
+        "name": "Froggy G",
+        "abilities": [
+            {
+                "name": "Splash Dash",
+                "upgrades": [
+                    "Hydro Splash",
+                    "Ice Cubes",
+                    "Golden Watch",
+                    "Hammer Pants",
+                    "Clock Necklace",
+                    "Hydro Smash"
+                ]
+            },
+            {
+                "name": "Tornado Move",
+                "upgrades": [
+                    "Boom Box",
+                    "Turbo Tape",
+                    "Can't Touch This",
+                    "Bio Fuel Cells",
+                    "Twister Tweeters",
+                    "Right Back At Ya!"
+                ]
+            },
+            {
+                "name": "Bolt .45 Fish-gun",
+                "upgrades": [
+                    "Swirling Octopus Cartridges",
+                    "Piranha Cartridges",
+                    "Mutant Worms",
+                    "Viridian Eel Cartridges",
+                    "Mutant Worms: Limited Ninja Edition",
+                    "Thorn Fish"
+                ]
+            },
+            {
+                "name": "Frog Jump",
+                "upgrades": [
+                    "Power Pills Turbo",
+                    "Med-i'-can",
+                    "Space Air Max",
+                    "Solar Tree",
+                    "Piggy Bank",
+                    "Power Pills"
+                ]
+            }
+        ]
     }
 ]
