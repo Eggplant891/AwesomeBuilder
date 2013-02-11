@@ -9,7 +9,7 @@ public class AwesomeCalcJava {
 
   public static void main(String[] args) {
     JavaPlatform platform = JavaPlatform.register();
-    platform.assetManager().setPathPrefix("src/main/java/com/ronma/awesomecalc/resources");
+    platform.assetManager().setPathPrefix("src/main/resources");
     PlayN.run(new AwesomeCalc());
   }
 }

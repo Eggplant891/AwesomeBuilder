@@ -37,8 +37,11 @@ public class Naut {
 	@Column(name = "NAUT_HEIGHT")
 	private double height;
 	
-	@Column(name = "RESOURCE_IMG_NAME")
-	String resImgName;
+	@Column(name = "RESOURCE_IMG_NAME_ICON")
+	String resImgNameIcon;
+	
+	@Column(name = "RESOURCE_IMG_NAME_FULL")
+	String resImgNameFull;
 	
 	@OneToMany
 	@Column(name = "ABILITY_ID")
@@ -103,6 +106,22 @@ public class Naut {
 
 	public void setHeight(double height) {
 		this.height = height;
+	}
+
+	public String getResImgNameIcon() {
+		return resImgNameIcon;
+	}
+
+	public void setResImgNameIcon(String resImgNameIcon) {
+		this.resImgNameIcon = resImgNameIcon;
+	}
+
+	public String getResImgNameFull() {
+		return resImgNameFull;
+	}
+
+	public void setResImgNameFull(String resImgNameFull) {
+		this.resImgNameFull = resImgNameFull;
 	}
 
 	public ArrayList<Ability> getAbilities() {
