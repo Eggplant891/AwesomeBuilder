@@ -33,6 +33,9 @@ public class Ability {
 	@Column(name = "ABILITY_COOLDOWN")
 	double cooldown;
 	
+	@Column(name = "RESOURCE_IMG_NAME")
+	String resImgName;
+	
 	@ManyToOne
 	@JoinColumn(name = "NAUT_ID")
 	private Naut naut;
@@ -86,6 +89,14 @@ public class Ability {
 
 	public void setCooldown(double cooldown) {
 		this.cooldown = cooldown;
+	}
+
+	public String getResImgName() {
+		return resImgName;
+	}
+
+	public void setResImgName(String resImgName) {
+		this.resImgName = resImgName;
 	}
 
 	public Naut getNaut() {

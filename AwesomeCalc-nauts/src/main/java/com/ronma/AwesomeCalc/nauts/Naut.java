@@ -37,6 +37,9 @@ public class Naut {
 	@Column(name = "NAUT_HEIGHT")
 	private double height;
 	
+	@Column(name = "RESOURCE_IMG_NAME")
+	String resImgName;
+	
 	@OneToMany
 	@Column(name = "ABILITY_ID")
 	private ArrayList<Ability> abilities;

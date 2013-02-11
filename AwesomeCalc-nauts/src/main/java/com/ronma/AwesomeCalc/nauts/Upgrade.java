@@ -21,14 +21,14 @@ public class Upgrade {
 	@Column(name = "UPGRADE_DESCRIPTION")
 	String description;
 	
-	@Column(name = "UPGRADE_ICON")
-	String icon;
-	
-	@Column(name = "UPGRADE_ICON")
+	@Column(name = "MAX_RANK")
 	Integer max_rank;
 	
-	@Column(name = "UPGRADE_ICON")
+	@Column(name = "SOLAR_COST")
 	Integer solar;
+
+	@Column(name = "RESOURCE_IMG_NAME")
+	String resImgName;
 
 	public String getDescription() {
 		return description;
@@ -36,14 +36,6 @@ public class Upgrade {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public String getIcon() {
-		return icon;
-	}
-
-	public void setIcon(String icon) {
-		this.icon = icon;
 	}
 
 	public Integer getMax_rank() {
@@ -73,6 +65,14 @@ public class Upgrade {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getResImgName() {
+		return resImgName;
+	}
+
+	public void setResImgName(String resImgName) {
+		this.resImgName = resImgName;
 	}
 
 	public String getName() {
