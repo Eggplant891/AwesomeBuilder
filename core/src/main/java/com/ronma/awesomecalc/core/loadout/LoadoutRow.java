@@ -2,15 +2,16 @@ package com.ronma.awesomecalc.core.loadout;
 
 import playn.core.Image;
 import com.ronma.awesomecalc.core.loadout.NautResources;
+import com.ronma.awesomecalc.core.loadout.abilities.*;
 import playn.core.Surface;
 import java.util.ArrayList;
 
 public class LoadoutRow {
     private LoadoutItem [] btns;
     private Image rowIcon;
-    private int itemsSelected;
     private ArrayList<LoadoutItem> selectedItems;
     private LoadoutRowType _type;
+    private Ability _baseAbility;
     
     public static Image rowBG;
     
@@ -24,7 +25,6 @@ public class LoadoutRow {
     private final int iconPadding = 8;
     
     public LoadoutRow(LoadoutRowType type, NautResDefinitions resDef) {
-        itemsSelected = 0;
         selectedItems = new ArrayList<LoadoutItem>();
         btns = new LoadoutItem[NautResources.NumSlotsPerAbility];
         rowIcon = resDef.res.GetAbilityIcon(type);

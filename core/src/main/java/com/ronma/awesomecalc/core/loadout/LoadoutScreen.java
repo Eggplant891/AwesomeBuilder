@@ -60,6 +60,7 @@ public class LoadoutScreen extends Screen {
         for (LoadoutRow r : l_row) {
             r.Paint(g);
         }
+        Fnt.DrawString(g, Fnt.Fnt_BigHeading, m_res.GetNautName(), 100, 40);
         if (selectedButton != null) {
             spr_selectionBracket.Draw(g, selectedButton.GetX() - 7, selectedButton.GetY() - 7, 1f, 1f);
             Fnt.DrawString(g, Fnt.Fnt_BigHeading, selectedButton._itemName, 300, 50);

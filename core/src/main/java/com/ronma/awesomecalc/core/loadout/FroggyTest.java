@@ -8,7 +8,7 @@ public class FroggyTest extends NautResDefinitions {
         super();
         
         _nautNameCode = "froggyG";
-        
+        _nautFullName = "Froggy G";
         _fullPortrait = "spr_froggyG_fullPortrait.png";
         _iconPortrait = "spr_froggyG_iconPortrait.png";
         

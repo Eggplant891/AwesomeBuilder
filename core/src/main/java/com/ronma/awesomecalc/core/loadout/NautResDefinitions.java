@@ -15,6 +15,7 @@ public class NautResDefinitions {
     protected String _fullPortrait;
     protected String _iconPortrait;
     protected String _nautNameCode;
+    protected String _nautFullName;
     
     public NautResDefinitions() {
         res = new NautResources();        
@@ -36,6 +37,10 @@ public class NautResDefinitions {
                 return _utility[col];
         }
         return null;
+    }
+    
+    public String GetNautName() {
+        return _nautFullName;
     }
     
     public void LoadResources() {

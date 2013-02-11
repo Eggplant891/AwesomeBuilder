@@ -30,6 +30,8 @@ public class AwesomeCalc implements Game {
   public ArrayList<LoadoutRow> l_row;
   
   public LoadoutScreen froggyScreen;
+  public LoadoutScreen raelynnScreen;
+  public Screen currentScreen;
   
   @Override
   public void init() {
@@ -64,7 +66,8 @@ public class AwesomeCalc implements Game {
     }
     public int numSelected = 0;
     public void InitApp() {
-        froggyScreen = new LoadoutScreen(new FroggyTest());
+        raelynnScreen = new LoadoutScreen(new RaelynnTest());
+        currentScreen = raelynnScreen;
         /*l_row = new ArrayList<LoadoutRow>();
         l_row.add(new LoadoutRow(LoadoutRowType.ABILITY1, f_test.res));
         l_row.add(new LoadoutRow(LoadoutRowType.ABILITY2, f_test.res));
@@ -79,8 +82,7 @@ public void paint(float alpha) {
     bgSurface.fillRect(0, 0, bgLayer.width(), bgLayer.height());
     bgSurface.drawImage(bgImage, 0, 0);
     
-    froggyScreen.Paint(bgSurface);
-    Fnt.DrawString(bgSurface, Fnt.Fnt_BigHeading, "Froggy G", 100, 50);
+    currentScreen.Paint(bgSurface);
 }
 
     int x, y;
@@ -93,7 +95,18 @@ public void paint(float alpha) {
             y = m.GetY();
         }
         
-        froggyScreen.Update(delta);
+        if (m.IsRightButtonPressed()) {
+            if (currentScreen == froggyScreen) {
+                if (raelynnScreen == null) raelynnScreen = new LoadoutScreen(new RaelynnTest());
+                currentScreen = raelynnScreen;
+            }
+            else {
+                if (froggyScreen == null) froggyScreen = new LoadoutScreen(new FroggyTest());
+                currentScreen = froggyScreen;
+            }
+        }
+        
+        currentScreen.Update(delta);
     }
 
     @Override
