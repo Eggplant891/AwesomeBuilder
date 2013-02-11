@@ -1,7 +1,9 @@
 package com.ronma.AwesomeCalc.nauts;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.util.List;
 
@@ -49,14 +51,15 @@ public class SimpleUtilTest
         assertNotNull(new Naut());
         
         SimpleUtil su = new SimpleUtil();
+        BufferedReader jsonReader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/naut.json")));
         
-        List<Naut> nauts = su.getNautsSimple();
+        List<Naut> nauts = su.getNautsFromJSON(jsonReader);
         assertNotNull("Naut list null", nauts);
         assertFalse("Naut list empty", nauts.isEmpty());
         
         for(Naut naut : nauts) {
         	assertNotNull("Naut null", naut);
-        	System.out.println("Naut: " + naut);
+        	System.out.print("naut: " + naut + ": ");
         	
         	List<Ability> abilities = naut.getAbilities();
         	assertNotNull("Ability list null", abilities);
@@ -64,7 +67,7 @@ public class SimpleUtilTest
         	
         	for (Ability ability : abilities) {
         		assertNotNull("Ability null", ability);
-        		System.out.println("Ability: " + ability);
+        		System.out.print(ability + "(");
         		
         		List<Upgrade> upgrades = ability.getUpgrades();
         		assertNotNull("Upgrade list null", upgrades);
@@ -72,10 +75,11 @@ public class SimpleUtilTest
             	
             	for (Upgrade upgrade : upgrades) {
             		assertNotNull("Upgrade null", upgrade);
-            		System.out.println("Upgrade: " + upgrade);
+            		System.out.print(upgrade + ",");
 				}
+            	System.out.print(")");
 			}
-        	
+        	System.out.println();
 		}
     }
 }
