@@ -1,7 +1,6 @@
 package com.ronma.AwesomeCalc.nauts;
 
 import java.util.ArrayList;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,6 +20,9 @@ public class Naut {
 	
 	@Column(name = "NAUT_NAME")
 	private String name;
+	
+	@Column(name = "NAUT_CODE")
+	private String code;
 	
 	@Column(name = "NAUT_SOLAR_START")
 	private Integer solarStart;
@@ -66,6 +68,14 @@ public class Naut {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public Integer getSolarStart() {

@@ -1,0 +1,56 @@
+{
+        "name": "Froggy G",
+        "code": "FroggyG",
+        "img_full" : "spr_froggyG_fullPortrait.png",
+        "img_icon" : "spr_froggyG_iconPortrait.png",
+        "abilities": [
+            {
+                "name": "Splash Dash",
+                "img_icon" : "spr_froggyG_splashDash.png",
+                "upgrades": [
+                    {"name" : "Hydro Splash", "img_icon" : "spr_froggyG_splashDash_hydroSplash.png"},
+                    {"name" : "Ice Cubes", "img_icon" : "spr_froggyG_splashDash_iceCubes.png"},
+                    {"name" : "Golden Watch", "img_icon" : "spr_froggyG_splashDash_goldenWatch.png"},
+                    {"name" : "Hammer Pants", "img_icon" : "spr_froggyG_splashDash_hammerPants.png"},
+                    {"name" : "Clock Necklace", "img_icon" : "spr_froggyG_splashDash_clockNecklace.png"},
+                    {"name" : "Hydro Smash", "img_icon" : "spr_froggyG_splashDash_hydroSmash.png"}
+                ]
+            },
+            {
+                "name": "Tornado Move",
+                "img_icon" : "spr_froggyG_tornado.png",
+                "upgrades": [
+                    {"name" : "Boom Box", "img_icon" : "spr_froggyG_tornado_boomBox.png"},
+                    {"name" : "Turbo Tape", "img_icon" : "spr_froggyG_tornado_turboTape.png"},
+                    {"name" : "Can't Touch This", "img_icon" : "spr_froggyG_tornado_cantTouchThis.png"},
+                    {"name" : "Bio Fuel Cells", "img_icon" : "spr_froggyG_tornado_bioFuelCells.png"},
+                    {"name" : "Twister Tweeters", "img_icon" : "spr_froggyG_tornado_twistedTweeters.png"},
+                    {"name" : "Right Back At Ya!", "img_icon" : "spr_froggyG_tornado_rightBackAtYa.png"}
+                ]
+            },
+            {
+                "name": "Bolt .45 Fish-gun",
+                "img_icon" : "spr_froggyG_autoAttack.png",
+                "upgrades": [
+                    {"name" : "Swirling Octopus Cartridges", "img_icon" : "spr_froggyG_autoAttack_swirlingOctopusCartridges.png"},
+                    {"name" : "Piranha Cartridges", "img_icon" : "spr_froggyG_autoAttack_piranhaCartridges.png"},
+                    {"name" : "Mutant Worms", "img_icon" : "spr_froggyG_autoAttack_mutantWorms.png"},
+                    {"name" : "Viridian Eel Cartridges", "img_icon" : "spr_froggyG_autoAttack_viridianEelCartridges.png"},
+                    {"name" : "Mutant Worms: Limited Ninja Edition", "img_icon" : "spr_froggyG_autoAttack_mutantWormsLimitedNinjaEdition.png"},
+                    {"name" : "Thorn Fish", "img_icon" : "spr_froggyG_autoAttack_thornFish.png"}
+                ]
+            },
+            {
+                "name": "Frog Jump",
+                "img_icon" : "spr_froggyG_utility.png",
+                "upgrades": [
+                    {"name" : "Power Pills Turbo", "img_icon" : "spr_froggyG_utility_powerPillsLight.png"},
+                    {"name" : "Med-i'-can", "img_icon" : "spr_froggyG_utility_medICan.png"},
+                    {"name" : "Space Air Max", "img_icon" : "spr_froggyG_utility_spaceAirMax.png"},
+                    {"name" : "Solar Tree", "img_icon" : "spr_froggyG_utility_solarTree.png"},
+                    {"name" : "Piggy Bank", "img_icon" : "spr_froggyG_utility_piggyBank.png"},
+                    {"name" : "Power Pills", "img_icon" : "spr_froggyG_utility_powerPills.png"}
+                ]
+            }
+        ]
+    }

@@ -1,7 +1,8 @@
 package com.ronma.awesomecalc.core;
 
 //import java.util.ArrayList;
-import com.ronma.awesomecalc.core.loadout.LoadoutToggleButton;
+import com.ronma.AwesomeCalc.nauts.Naut;
+import com.ronma.AwesomeCalc.nauts.util.NautsUtil;
 import com.ronma.awesomecalc.core.loadout.*;
 
 import playn.core.Game;
@@ -101,7 +102,8 @@ public void paint(float alpha) {
                 currentScreen = raelynnScreen;
             }
             else {
-                if (froggyScreen == null) froggyScreen = new LoadoutScreen(new FroggyTest());
+            	Naut froggy = new NautsUtil().getNautFromJSON("/froggyg.json");
+                if (froggyScreen == null) froggyScreen = new LoadoutScreen(new NautResDefinitions().fillDefinitions(froggy));
                 currentScreen = froggyScreen;
             }
         }

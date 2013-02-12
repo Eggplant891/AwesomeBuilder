@@ -30,6 +30,12 @@
       <artifactId>playn-html</artifactId>
       <version>${playn.version}</version>
     </dependency>
+    
+    <dependency>
+		<groupId>com.ronma</groupId>
+		<artifactId>AwesomeCalc-nauts</artifactId>
+		<version>${project.version}</version>
+    </dependency>
   </dependencies>
 
   <build>
