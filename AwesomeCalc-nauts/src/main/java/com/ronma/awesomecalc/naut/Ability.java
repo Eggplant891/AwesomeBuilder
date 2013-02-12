@@ -1,4 +1,4 @@
-package com.ronma.AwesomeCalc.nauts;
+package com.ronma.awesomecalc.naut;
 
 import java.util.List;
 

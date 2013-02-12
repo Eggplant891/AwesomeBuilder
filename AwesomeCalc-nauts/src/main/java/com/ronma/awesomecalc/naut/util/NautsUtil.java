@@ -1,4 +1,4 @@
-package com.ronma.AwesomeCalc.nauts.util;
+package com.ronma.awesomecalc.naut.util;
 
 
 import java.io.BufferedReader;
@@ -15,7 +15,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import com.ronma.AwesomeCalc.nauts.*;
+import com.ronma.awesomecalc.naut.Ability;
+import com.ronma.awesomecalc.naut.Naut;
+import com.ronma.awesomecalc.naut.Upgrade;
 
 public class NautsUtil {
 	

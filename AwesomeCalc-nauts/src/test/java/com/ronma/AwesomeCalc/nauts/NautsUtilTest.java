@@ -9,7 +9,10 @@ import java.util.List;
 
 import org.json.simple.parser.ParseException;
 
-import com.ronma.AwesomeCalc.nauts.util.NautsUtil;
+import com.ronma.awesomecalc.naut.Ability;
+import com.ronma.awesomecalc.naut.Naut;
+import com.ronma.awesomecalc.naut.Upgrade;
+import com.ronma.awesomecalc.naut.util.NautsUtil;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

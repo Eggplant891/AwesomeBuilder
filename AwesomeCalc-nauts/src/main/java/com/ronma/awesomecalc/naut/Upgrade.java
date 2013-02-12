@@ -1,4 +1,4 @@
-package com.ronma.AwesomeCalc.nauts;
+package com.ronma.awesomecalc.naut;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

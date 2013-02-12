@@ -3,6 +3,7 @@
 
   <source path='core'/>
   <source path='html'/>
+  <source path='AwesomeCalc-nauts'/>
 
   <public path="resources" />
 

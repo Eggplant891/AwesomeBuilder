@@ -1,8 +1,6 @@
 package com.ronma.awesomecalc.core;
 
 //import java.util.ArrayList;
-import com.ronma.AwesomeCalc.nauts.Naut;
-import com.ronma.AwesomeCalc.nauts.util.NautsUtil;
 import com.ronma.awesomecalc.core.loadout.*;
 
 import playn.core.Game;
@@ -18,6 +16,9 @@ import java.util.ArrayList;
 import com.ronma.awesomecalc.core.input.MouseInput;
 import com.ronma.awesomecalc.core.input.MouseState;
 import com.ronma.awesomecalc.core.loadout.FroggyTest;
+import com.ronma.awesomecalc.naut.Naut;
+import com.ronma.awesomecalc.naut.util.NautsUtil;
+
 import playn.core.Font;
 
 public class AwesomeCalc implements Game {
@@ -102,8 +103,9 @@ public void paint(float alpha) {
                 currentScreen = raelynnScreen;
             }
             else {
-            	Naut froggy = new NautsUtil().getNautFromJSON("/froggyg.json");
-                if (froggyScreen == null) froggyScreen = new LoadoutScreen(new NautResDefinitions().fillDefinitions(froggy));
+            	//Naut froggy = new NautsUtil().getNautFromJSON("/froggyg.json");
+                //if (froggyScreen == null) froggyScreen = new LoadoutScreen(new NautResDefinitions().fillDefinitions(froggy));
+            	if (froggyScreen == null) froggyScreen = new LoadoutScreen(new FroggyTest());
                 currentScreen = froggyScreen;
             }
         }

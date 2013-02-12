@@ -1,9 +1,9 @@
 package com.ronma.awesomecalc.core.loadout;
 
-import com.ronma.AwesomeCalc.nauts.Ability;
-import com.ronma.AwesomeCalc.nauts.Naut;
-import com.ronma.AwesomeCalc.nauts.Upgrade;
 import com.ronma.awesomecalc.core.Global;
+import com.ronma.awesomecalc.naut.Ability;
+import com.ronma.awesomecalc.naut.Naut;
+import com.ronma.awesomecalc.naut.Upgrade;
 
 public class NautResDefinitions {
     public NautResources res;
@@ -24,49 +24,49 @@ public class NautResDefinitions {
         res = new NautResources();        
     }
     
-    public NautResDefinitions fillDefinitions(Naut n) {
-    	
-    	_nautNameCode = n.getCode();
-        _nautFullName = n.getName();
-        _fullPortrait = n.getResImgNameFull();
-        _iconPortrait = n.getResImgNameIcon();
-        
-        String imagePrefix = "images/" + n.getCode() + "/";
-        
-        Ability a = n.getAbilities().get(0);
-        _ability1Icon = a.getResImgName();
-        _ability1 = new LoadoutItemDefinition[6];
-        for(int i = 0; i < a.getUpgrades().size(); i++){
-        	Upgrade u = a.getUpgrades().get(i);
-        	_ability1[i] = new LoadoutItemDefinition(imagePrefix + u.getResImgName(), u.getName(), "---" + u.getName() + "---");
-        }
-        
-        a = n.getAbilities().get(1);
-        _ability2Icon = a.getResImgName();
-        _ability2 = new LoadoutItemDefinition[6];
-        for(int i = 0; i < a.getUpgrades().size(); i++){
-        	Upgrade u = a.getUpgrades().get(i);
-        	_ability2[i] = new LoadoutItemDefinition(imagePrefix + u.getResImgName(), u.getName(), "---" + u.getName() + "---");
-        }
-        
-        a = n.getAbilities().get(2);
-        _autoAttackIcon = a.getResImgName();
-        _autoAttack = new LoadoutItemDefinition[6];
-        for(int i = 0; i < a.getUpgrades().size(); i++){
-        	Upgrade u = a.getUpgrades().get(i);
-        	_autoAttack[i] = new LoadoutItemDefinition(imagePrefix + u.getResImgName(), u.getName(), "---" + u.getName() + "---");
-        }
-        
-        a = n.getAbilities().get(3);
-        _utilityIcon = a.getResImgName();
-        _utility = new LoadoutItemDefinition[6];
-        for(int i = 0; i < a.getUpgrades().size(); i++){
-        	Upgrade u = a.getUpgrades().get(i);
-        	_utility[i] = new LoadoutItemDefinition(imagePrefix + u.getResImgName(), u.getName(), "---" + u.getName() + "---");
-        }
-     
-        return this;
-	}
+//    public NautResDefinitions fillDefinitions(Naut n) {
+//    	
+//    	_nautNameCode = n.getCode();
+//        _nautFullName = n.getName();
+//        _fullPortrait = n.getResImgNameFull();
+//        _iconPortrait = n.getResImgNameIcon();
+//        
+//        String imagePrefix = "images/" + n.getCode() + "/";
+//        
+//        Ability a = n.getAbilities().get(0);
+//        _ability1Icon = a.getResImgName();
+//        _ability1 = new LoadoutItemDefinition[6];
+//        for(int i = 0; i < a.getUpgrades().size(); i++){
+//        	Upgrade u = a.getUpgrades().get(i);
+//        	_ability1[i] = new LoadoutItemDefinition(imagePrefix + u.getResImgName(), u.getName(), "---" + u.getName() + "---");
+//        }
+//        
+//        a = n.getAbilities().get(1);
+//        _ability2Icon = a.getResImgName();
+//        _ability2 = new LoadoutItemDefinition[6];
+//        for(int i = 0; i < a.getUpgrades().size(); i++){
+//        	Upgrade u = a.getUpgrades().get(i);
+//        	_ability2[i] = new LoadoutItemDefinition(imagePrefix + u.getResImgName(), u.getName(), "---" + u.getName() + "---");
+//        }
+//        
+//        a = n.getAbilities().get(2);
+//        _autoAttackIcon = a.getResImgName();
+//        _autoAttack = new LoadoutItemDefinition[6];
+//        for(int i = 0; i < a.getUpgrades().size(); i++){
+//        	Upgrade u = a.getUpgrades().get(i);
+//        	_autoAttack[i] = new LoadoutItemDefinition(imagePrefix + u.getResImgName(), u.getName(), "---" + u.getName() + "---");
+//        }
+//        
+//        a = n.getAbilities().get(3);
+//        _utilityIcon = a.getResImgName();
+//        _utility = new LoadoutItemDefinition[6];
+//        for(int i = 0; i < a.getUpgrades().size(); i++){
+//        	Upgrade u = a.getUpgrades().get(i);
+//        	_utility[i] = new LoadoutItemDefinition(imagePrefix + u.getResImgName(), u.getName(), "---" + u.getName() + "---");
+//        }
+//     
+//        return this;
+//	}
 
 
 
