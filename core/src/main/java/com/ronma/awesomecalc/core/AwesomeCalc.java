@@ -16,8 +16,8 @@ import java.util.ArrayList;
 import com.ronma.awesomecalc.core.input.MouseInput;
 import com.ronma.awesomecalc.core.input.MouseState;
 import com.ronma.awesomecalc.core.loadout.FroggyTest;
-import com.ronma.awesomecalc.naut.Naut;
-import com.ronma.awesomecalc.naut.util.NautsUtil;
+import com.ronma.awesomecalc.nauts.Naut;
+import com.ronma.awesomecalc.nauts.util.NautsUtil;
 
 import playn.core.Font;
 

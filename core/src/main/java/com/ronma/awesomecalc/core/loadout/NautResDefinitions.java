@@ -1,9 +1,9 @@
 package com.ronma.awesomecalc.core.loadout;
 
 import com.ronma.awesomecalc.core.Global;
-import com.ronma.awesomecalc.naut.Ability;
-import com.ronma.awesomecalc.naut.Naut;
-import com.ronma.awesomecalc.naut.Upgrade;
+import com.ronma.awesomecalc.nauts.Ability;
+import com.ronma.awesomecalc.nauts.Naut;
+import com.ronma.awesomecalc.nauts.Upgrade;
 
 public class NautResDefinitions {
     public NautResources res;

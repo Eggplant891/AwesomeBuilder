@@ -20,7 +20,6 @@
   <modules>
     <module>core</module>
     <module>html</module>
-    <!--<module>android</module>-->
-    <module>AwesomeCalc-nauts</module>
+    <module>nauts</module>
   </modules>
 </project>
