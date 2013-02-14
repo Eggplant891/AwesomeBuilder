@@ -16,7 +16,7 @@ public class NautResDefinitions {
     protected LoadoutItemDefinition [] _utility;
     protected String _utilityIcon;
     protected String _fullPortrait;
-    protected String _iconPortrait;
+    public String _iconPortrait; //TEMP TEMP TEMP PUBLIC
     protected String _nautNameCode;
     protected String _nautFullName;
     
@@ -93,23 +93,23 @@ public class NautResDefinitions {
     }
     
     public void LoadResources() {
-        res.SetPortrait(Global.m_assetManager.getImage("images/" + _nautNameCode + "/" + _fullPortrait));
-        res.SetPortraitIcon(Global.m_assetManager.getImage("images/" + _nautNameCode + "/" + _iconPortrait));
+        res.SetPortrait(Global.m_assetManager.getImage(_fullPortrait));
+        res.SetPortraitIcon(Global.m_assetManager.getImage(_iconPortrait));
         
-        res.SetAbility1Icon(Global.m_assetManager.getImage("images/" + _nautNameCode + "/" + _ability1Icon));
-        res.SetAbility2Icon(Global.m_assetManager.getImage("images/" + _nautNameCode + "/" + _ability2Icon));
-        res.SetAutoAttackIcon(Global.m_assetManager.getImage("images/" + _nautNameCode + "/" + _autoAttackIcon));
-        res.SetUtilityIcon(Global.m_assetManager.getImage("images/" + _nautNameCode + "/" + _utilityIcon));
+        res.SetAbility1Icon(Global.m_assetManager.getImage(_ability1Icon));
+        res.SetAbility2Icon(Global.m_assetManager.getImage(_ability2Icon));
+        res.SetAutoAttackIcon(Global.m_assetManager.getImage(_autoAttackIcon));
+        res.SetUtilityIcon(Global.m_assetManager.getImage(_utilityIcon));
         
         for (int i = 0; i < NautResources.NumSlotsPerAbility; i ++) {
             res.AddSlot(LoadoutRowType.ABILITY1, _ability1[i].LoadImage());
             res.AddSlot(LoadoutRowType.ABILITY2, _ability2[i].LoadImage());                
             res.AddSlot(LoadoutRowType.AUTO_ATTACK, _autoAttack[i].LoadImage());
             res.AddSlot(LoadoutRowType.UTILITY, _utility[i].LoadImage());
-            System.out.println("Loaded resource: " + _ability1[i].GetImagePath());
+            /*System.out.println("Loaded resource: " + _ability1[i].GetImagePath());
             System.out.println("Loaded resource: " + _ability2[i].GetImagePath());
             System.out.println("Loaded resource: " + _autoAttack[i].GetImagePath());
-            System.out.println("Loaded resource: " + _utility[i].GetImagePath());
+            System.out.println("Loaded resource: " + _utility[i].GetImagePath());*/
         }
     }
 }

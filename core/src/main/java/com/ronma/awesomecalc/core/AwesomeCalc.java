@@ -1,6 +1,7 @@
 package com.ronma.awesomecalc.core;
 
 //import java.util.ArrayList;
+import com.ronma.awesomecalc.core.loadout.LoadoutScreen;
 import com.ronma.awesomecalc.core.loadout.*;
 
 import playn.core.Game;
@@ -39,12 +40,13 @@ public class AwesomeCalc implements Game {
   public void init() {
     Global.m_assetManager = assetManager();
     Global.m_graphics = graphics();
+    Global.m_screenHandler = new ScreenHandler();
     Fnt.Init();
     
     bgImage = Global.m_assetManager.getImage("images/bg.png");
     LoadoutRow.rowBG = Global.m_assetManager.getImage("images/spr_loadoutRowBG.png");
-    Global.m_graphics.setSize(800, 600);
-    bgLayer = graphics().createSurfaceLayer(800,600);
+    Global.m_graphics.setSize(Global.ScreenWidth, Global.ScreenHeight);
+    bgLayer = graphics().createSurfaceLayer(Global.ScreenWidth,Global.ScreenHeight);
     bgSurface = bgLayer.surface();
     Global.m_graphics.rootLayer().add(bgLayer);
     mouse().setListener(MouseInput.GetInstance());
@@ -68,49 +70,42 @@ public class AwesomeCalc implements Game {
     }
     public int numSelected = 0;
     public void InitApp() {
-        raelynnScreen = new LoadoutScreen(new RaelynnTest());
-        currentScreen = raelynnScreen;
-        /*l_row = new ArrayList<LoadoutRow>();
-        l_row.add(new LoadoutRow(LoadoutRowType.ABILITY1, f_test.res));
-        l_row.add(new LoadoutRow(LoadoutRowType.ABILITY2, f_test.res));
-        l_row.add(new LoadoutRow(LoadoutRowType.AUTO_ATTACK, f_test.res));
-        l_row.add(new LoadoutRow(LoadoutRowType.UTILITY, f_test.res));*/
+        //raelynnScreen = new LoadoutScreen(new RaelynnTest());
+        Global.m_screenHandler.ChangeScreen(ScreenName.NAUT_SELECTION);
+        //currentScreen = raelynnScreen;
     }
 
-@Override
-public void paint(float alpha) {
-    if (!watcherFinished) return;
-    bgSurface.clear();
-    bgSurface.fillRect(0, 0, bgLayer.width(), bgLayer.height());
-    bgSurface.drawImage(bgImage, 0, 0);
-    
-    currentScreen.Paint(bgSurface);
-}
+    @Override
+    public void paint(float alpha) {
+        if (watcherFinished) {
+            bgSurface.clear();
+            bgSurface.fillRect(0, 0, bgLayer.width(), bgLayer.height());
+            bgSurface.drawImage(bgImage, -1, -1);
+        }
+        Global.m_screenHandler.Paint(bgSurface);
+        Fnt.DrawString(bgSurface, Fnt.Fnt_Standard, Global.m_version, 0, Global.ScreenHeight - 16);
+    }
 
     int x, y;
     @Override
     public void update(float delta) {
-        if (!watcherFinished) return;
         MouseState m = MouseInput.GetInstance().PollInput();
-        if (m.IsLeftButtonHeld()) {
-            x = m.GetX();
-            y = m.GetY();
-        }
-        
-        if (m.IsRightButtonPressed()) {
-            if (currentScreen == froggyScreen) {
-                if (raelynnScreen == null) raelynnScreen = new LoadoutScreen(new RaelynnTest());
-                currentScreen = raelynnScreen;
+        if (watcherFinished) {
+            if (m.IsLeftButtonHeld()) {
+                x = m.GetX();
+                y = m.GetY();
             }
-            else {
-            	//Naut froggy = new NautsUtil().getNautFromJSON("/froggyg.json");
-                //if (froggyScreen == null) froggyScreen = new LoadoutScreen(new NautResDefinitions().fillDefinitions(froggy));
-            	if (froggyScreen == null) froggyScreen = new LoadoutScreen(new FroggyTest());
-                currentScreen = froggyScreen;
+
+            if (m.IsRightButtonPressed()) {
+                if (Global.m_screenHandler.GetCurrentScreenName() == ScreenName.LOADOUT_FROGGYG) {
+                    Global.m_screenHandler.ChangeScreen(ScreenName.LOADOUT_RAELYNN);
+                }
+                else {
+                    Global.m_screenHandler.ChangeScreen(ScreenName.LOADOUT_FROGGYG);
+                }
             }
         }
-        
-        currentScreen.Update(delta);
+        Global.m_screenHandler.Update(delta);
     }
 
     @Override

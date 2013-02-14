@@ -10,6 +10,6 @@ public class AwesomeCalcJava {
   public static void main(String[] args) {
     JavaPlatform platform = JavaPlatform.register();
     platform.assetManager().setPathPrefix("src/main/resources");
-    PlayN.run(new AwesomeCalc());
+        PlayN.run(new AwesomeCalc());
   }
 }

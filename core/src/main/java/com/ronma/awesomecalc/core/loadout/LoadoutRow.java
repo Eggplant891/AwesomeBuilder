@@ -20,6 +20,9 @@ public class LoadoutRow {
     public static int xSpacing = 4;
     public static int ySpacing = 12;
     
+    private int targetX, targetY;
+    private int deniedTimer = 0;
+    
     private LoadoutItem rowSelection = null;
     
     private final int iconPadding = 8;
@@ -43,6 +46,9 @@ public class LoadoutRow {
                         Toggle();
                         UpdateSelectedItems();
                     }
+                    else {
+                        SelectionDenied(this);
+                    }
                 }
                 
                 @Override
@@ -51,6 +57,12 @@ public class LoadoutRow {
                 }
             };
         }
+    }
+    
+    public void SelectionDenied(LoadoutToggleButton l) {
+        targetX = l.GetX();
+        targetY = l.GetY();
+        deniedTimer = 30;
     }
     
     public void UpdateSelectedItems() {
@@ -74,6 +86,7 @@ public class LoadoutRow {
         for (int i = 0; i < NautResources.NumSlotsPerAbility; i++) {
             btns[i].Update(delta);
         }
+        if (deniedTimer > 0) deniedTimer--;
     }
     
     public void Paint(Surface g) {
@@ -87,5 +100,10 @@ public class LoadoutRow {
             l.GetSprite().Draw(g, 550 + 64 * i, yOffset + (_type.ordinal() * 64), 1.0f, 1.0f);
             i++;
         }
+        
+        if (deniedTimer > 0) {
+            g.drawImage(LoadoutScreen.selectionDenied, targetX, targetY);
+        }
     }
 }
+

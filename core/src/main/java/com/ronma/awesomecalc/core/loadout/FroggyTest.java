@@ -9,10 +9,10 @@ public class FroggyTest extends NautResDefinitions {
         
         _nautNameCode = "froggyG";
         _nautFullName = "Froggy G";
-        _fullPortrait = "spr_froggyG_fullPortrait.png";
-        _iconPortrait = "spr_froggyG_iconPortrait.png";
+        _fullPortrait = "images/froggyG/spr_froggyG_fullPortrait.png";
+        _iconPortrait = "images/froggyG/spr_froggyG_iconPortrait.png";
         
-        _ability1Icon = "spr_froggyG_splashDash.png";
+        _ability1Icon = "images/froggyG/spr_froggyG_splashDash.png";
         _ability1 = new LoadoutItemDefinition[] {
             new LoadoutItemDefinition("images/froggyG/spr_froggyG_splashDash_hydroSplash.png", "Hydro Splash", "---Hydro Splash Desc---"),
             new LoadoutItemDefinition("images/froggyG/spr_froggyG_splashDash_iceCubes.png", "Ice Cubes", "---Ice Cubes---"),
@@ -22,7 +22,7 @@ public class FroggyTest extends NautResDefinitions {
             new LoadoutItemDefinition("images/froggyG/spr_froggyG_splashDash_hydroSmash.png", "Hydro Smash", "---Hydro Smash---")
         };
         
-        _ability2Icon = "spr_froggyG_tornado.png";
+        _ability2Icon = "images/froggyG/spr_froggyG_tornado.png";
         _ability2 = new LoadoutItemDefinition[] {
             new LoadoutItemDefinition("images/froggyG/spr_froggyG_tornado_boomBox.png", "Boom Box", "---Boom Box---"),
             new LoadoutItemDefinition("images/froggyG/spr_froggyG_tornado_turboTape.png", "Turbo Tape", "---Turbo Tape---"),
@@ -32,7 +32,7 @@ public class FroggyTest extends NautResDefinitions {
             new LoadoutItemDefinition("images/froggyG/spr_froggyG_tornado_rightBackAtYa.png", "Right Back at ya", "---Right Back At Ya---")
         }; 
         
-        _autoAttackIcon = "spr_froggyG_autoAttack.png";
+        _autoAttackIcon = "images/froggyG/spr_froggyG_autoAttack.png";
         _autoAttack = new LoadoutItemDefinition[] {
             new LoadoutItemDefinition("images/froggyG/spr_froggyG_autoAttack_swirlingOctopusCartridges.png", "Swirling Octopus Cartridges", "---Swirling Octopus Cartridges"),
             new LoadoutItemDefinition("images/froggyG/spr_froggyG_autoAttack_piranhaCartridges.png", "Pirhana Cartridges", "---Pirhana Cartridges---"),
@@ -42,7 +42,7 @@ public class FroggyTest extends NautResDefinitions {
             new LoadoutItemDefinition("images/froggyG/spr_froggyG_autoAttack_thornFish.png", "Thorn Fish", "---Thorn Fish---")
         };
         
-        _utilityIcon = "spr_froggyG_utility.png";
+        _utilityIcon = "images/froggyG/spr_froggyG_utility.png";
         _utility = new LoadoutItemDefinition[] {
             new LoadoutItemDefinition("images/froggyG/spr_froggyG_utility_powerPillsLight.png", "Power Pills Light", "+30hp x 2"),
             new LoadoutItemDefinition("images/froggyG/spr_froggyG_utility_medICan.png", "Med-I Can", "+120 regen rate"),
