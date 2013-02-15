@@ -4,7 +4,7 @@ import com.ronma.awesomecalc.core.Sprite;
 import playn.core.Image;
 import playn.core.Surface;
 public class LoadoutToggleButton extends GameObject {
-    private boolean _state = false;
+    protected boolean _state = false;
     private int _id;
     
     public LoadoutToggleButton(Image img, int id, int x, int y, boolean startsOn) {

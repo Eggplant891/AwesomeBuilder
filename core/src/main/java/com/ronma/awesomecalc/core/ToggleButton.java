@@ -2,7 +2,7 @@ package com.ronma.awesomecalc.core;
 import playn.core.Image;
 import playn.core.Surface;
 public class ToggleButton extends GameObject {
-    private boolean _state = false;
+    protected boolean _state = false;
     
     public ToggleButton(Image img, int x, int y, boolean startsOn) {
         super(Sprite.CreateAnimatedSprite(img, 5, 1, 0, 5, 0), x, y);

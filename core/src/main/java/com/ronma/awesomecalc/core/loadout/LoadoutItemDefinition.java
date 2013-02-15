@@ -8,11 +8,13 @@ public class LoadoutItemDefinition {
     Image _image;
     String _itemName;
     String _itemDescription;
+    int _stages;
     
-    public LoadoutItemDefinition(String imgPath, String name, String desc) {
+    public LoadoutItemDefinition(String imgPath, String name, String desc, int stages) {
         _imagePath = imgPath;
         _itemName = name;
         _itemDescription = desc;
+        _stages = stages;
     }
     
     public String GetImagePath   () {
@@ -30,6 +32,10 @@ public class LoadoutItemDefinition {
     
     public Image GetImage() {
         return _image;
+    }
+    
+    public int GetTotalStages() {
+        return _stages;
     }
     
     public String GetItemDescription() {

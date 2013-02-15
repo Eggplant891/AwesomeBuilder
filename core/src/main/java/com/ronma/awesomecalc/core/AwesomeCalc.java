@@ -46,7 +46,7 @@ public class AwesomeCalc implements Game {
     bgImage = Global.m_assetManager.getImage("images/bg.png");
     LoadoutRow.rowBG = Global.m_assetManager.getImage("images/spr_loadoutRowBG.png");
     Global.m_graphics.setSize(Global.ScreenWidth, Global.ScreenHeight);
-    bgLayer = graphics().createSurfaceLayer(Global.ScreenWidth,Global.ScreenHeight);
+    bgLayer = graphics().createSurfaceLayer(Global.ScreenWidth, Global.ScreenHeight);
     bgSurface = bgLayer.surface();
     Global.m_graphics.rootLayer().add(bgLayer);
     mouse().setListener(MouseInput.GetInstance());

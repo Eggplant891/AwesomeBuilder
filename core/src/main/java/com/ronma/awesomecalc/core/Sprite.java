@@ -133,4 +133,13 @@ public class Sprite {
                                             (int)(_frameHeight * yScale));
 		Func.DrawImageRect(s, _spriteSource, _currentFrameRect, _canvasRect);
 	}
+        
+        public void DrawPartial(Surface s, Rectangle framePortion, int x, int y, float xScale, float yScale) {
+		_canvasRect.SetPosition((x + framePortion.GetX()) - (int)(_originX * xScale),
+                                        (y + framePortion.GetY()) - (int)(_originY * yScale));
+		_canvasRect.SetSize((int)(framePortion.GetWidth() * xScale),
+                                            (int)(framePortion.GetHeight() * yScale));
+                framePortion.SetPosition(framePortion.GetX() + _currentFrameRect.GetX(), framePortion.GetY() + _currentFrameRect.GetY());
+		Func.DrawImageRect(s, _spriteSource, framePortion, _canvasRect);
+	}
 }

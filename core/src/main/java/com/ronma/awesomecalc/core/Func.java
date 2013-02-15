@@ -54,6 +54,9 @@ public class Func {
     }
     
     public static void DrawImageRect(Surface s, Image img, Rectangle src, Rectangle dst) {
+        // Special clause to fix issue with Opera Web Browser refusing to continue
+        // drawing after encountering a source or destination rectangle definition with width or height of 0.
+        if (src.GetWidth() == 0 || src.GetHeight() == 0 || dst.GetWidth() == 0 || dst.GetHeight() == 0) return;
         s.drawImage(img, dst.GetX(), dst.GetY(), dst.GetWidth(), dst.GetHeight(), src.GetX(), src.GetY(), src.GetWidth(), src.GetHeight());
     }
 }

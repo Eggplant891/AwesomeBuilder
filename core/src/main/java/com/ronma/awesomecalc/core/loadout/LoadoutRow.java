@@ -95,11 +95,10 @@ public class LoadoutRow {
         for (int i = 0; i < NautResources.NumSlotsPerAbility; i++) {
             btns[i].Paint(g);
         }
-        int i = 0;
-        for (LoadoutItem l : selectedItems) {
+        /*for (LoadoutItem l : selectedItems) {
             l.GetSprite().Draw(g, 550 + 64 * i, yOffset + (_type.ordinal() * 64), 1.0f, 1.0f);
             i++;
-        }
+        }*/
         
         if (deniedTimer > 0) {
             g.drawImage(LoadoutScreen.selectionDenied, targetX, targetY);

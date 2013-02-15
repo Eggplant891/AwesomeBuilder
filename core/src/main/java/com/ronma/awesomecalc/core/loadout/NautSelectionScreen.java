@@ -6,6 +6,7 @@ import playn.core.Image;
 public class NautSelectionScreen extends Screen {
     private String nautIcons [] = {
         "images/clunk/spr_clunk_iconPortrait_button.png",
+        "images/coco/spr_coco_iconPortrait_button.png",
         "images/derpl/spr_derpl_iconPortrait_button.png",
         "images/froggyG/spr_froggyG_iconPortrait_button.png",
         "images/gnaw/spr_gnaw_iconPortrait_button.png",
@@ -21,17 +22,18 @@ public class NautSelectionScreen extends Screen {
     private int i;
     
     private ScreenName buttonTargets[] = {
-        ScreenName.NAUT_SELECTION,
-        ScreenName.NAUT_SELECTION,
-        ScreenName.LOADOUT_FROGGYG,
-        ScreenName.NAUT_SELECTION,
-        ScreenName.NAUT_SELECTION,
-        ScreenName.NAUT_SELECTION,
-        ScreenName.LOADOUT_RAELYNN,
-        ScreenName.NAUT_SELECTION,
-        ScreenName.NAUT_SELECTION,
-        ScreenName.NAUT_SELECTION,
-        ScreenName.NAUT_SELECTION,
+        ScreenName.NAUT_SELECTION,      // Clunk
+        ScreenName.NAUT_SELECTION,      // Coco
+        ScreenName.NAUT_SELECTION,      // Derpl
+        ScreenName.LOADOUT_FROGGYG,     // Froggy
+        ScreenName.NAUT_SELECTION,      // Gnaw
+        ScreenName.NAUT_SELECTION,      // Leon
+        ScreenName.NAUT_SELECTION,      // Lonestar
+        ScreenName.LOADOUT_RAELYNN,     // Raelynn
+        ScreenName.NAUT_SELECTION,      // Skolldir
+        ScreenName.NAUT_SELECTION,      // Vinny
+        ScreenName.NAUT_SELECTION,      // Voltar
+        ScreenName.NAUT_SELECTION,      // Yuri
     };
     
     private Image nautImages [];
