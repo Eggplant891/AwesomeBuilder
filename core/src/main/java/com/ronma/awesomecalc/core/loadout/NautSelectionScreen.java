@@ -53,7 +53,7 @@ public class NautSelectionScreen extends Screen {
     @Override
     public void InitScreen() {
         for (i = 0; i < Global.NumNauts; i++) {
-            nautButtons[i] = new Button(nautImages[i], 20 + (i % 8) * 80, 20 + ((int)(i / 8))*80) {
+            nautButtons[i] = new Button(nautImages[i], 20 + (i % 12) * 80, 80 + ((int)(i / 12)) * 80) {
                 @Override
                 public void Clicked() {
                     Global.m_screenHandler.ChangeScreen(buttonTargets[i]);
@@ -74,5 +74,6 @@ public class NautSelectionScreen extends Screen {
         for (i = 0; i < Global.NumNauts; i++) {
             nautButtons[i].Paint(g);
         }
+        Fnt.DrawString(g, Fnt.Fnt_BigHeading, "AwesomeBuilder (Patch v1.14)", 20, 20);
     }
 }

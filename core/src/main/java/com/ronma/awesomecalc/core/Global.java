@@ -12,7 +12,7 @@ import playn.core.CanvasImage;
 public class Global {
     public static AssetManager m_assetManager;
     public static Graphics m_graphics;
-    public static int ScreenWidth = 1024;
+    public static int ScreenWidth = 940;
     public static int ScreenHeight = 480;
     public static ScreenHandler m_screenHandler;
     public static int NumNauts = 11;

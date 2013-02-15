@@ -26,7 +26,7 @@ public class AwesomeCalc implements Game {
   public static Image bgImage, button;
   SurfaceLayer bgLayer;
   Surface bgSurface;
-  public static int UpdateRate = 16;
+  public static int UpdateRate = 33;
   AssetWatcher watcher;
   public boolean watcherFinished;
   

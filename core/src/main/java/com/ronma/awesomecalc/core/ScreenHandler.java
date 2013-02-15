@@ -17,7 +17,7 @@ public class ScreenHandler {
     }
     
     public void Update(float delta) {
-        if (_currentScreen != null) _currentScreen.Update(delta);
+        if (_currentScreen != null && !_loadingScreen.IsVisible) _currentScreen.Update(delta);
         _loadingScreen.Update(delta);
     }
     
@@ -99,7 +99,7 @@ public class ScreenHandler {
             // Apply abritrary loading time to test the loading screen.
             //if (!_targetScreen.watcherFinished) {
                 IsVisible = true;
-                //abritraryLoadingTimer = 60;
+                //abritraryLoadingTimer = 180;
             //}
         }
 
@@ -108,8 +108,9 @@ public class ScreenHandler {
             if (_targetScreen != null) {
                 if (_targetScreen.watcher.isDone()) {
                     abritraryLoadingTimer--;
-                    ChangeScreenDirectly(_targetScreenName);
+                    
                     if (abritraryLoadingTimer <= 0) {
+                        ChangeScreenDirectly(_targetScreenName);
                         IsVisible = false;
                     }
                 }
@@ -122,9 +123,13 @@ public class ScreenHandler {
         protected void ScreenPaint(Surface g) {
             if (_targetScreen == null && _targetScreenName != ScreenName.TARGETLESS) Fnt.DrawString(g, Fnt.Fnt_MildHeading, "A screen change error has occured.", 10, 10);
             else {
-                g.setFillColor(0xFF8844AA);
-                g.fillRect(Global.ScreenWidth/2 - 80, Global.ScreenHeight/2 - 32, 160, 64);
-                Fnt.DrawString(g, Fnt.Fnt_MildHeading, LoadingStrings[(int)(loadStringCounter/8)], Global.ScreenWidth/2 - 64, Global.ScreenHeight/2-12);
+                g.setFillColor(0x66000000);
+                g.fillRect(Global.ScreenWidth/2 - 68, Global.ScreenHeight/2 - 27, 162, 52);
+                g.setFillColor(0xFFFFFFFF);
+                g.fillRect(Global.ScreenWidth/2 - 74, Global.ScreenHeight/2 - 33, 162, 52);
+                g.setFillColor(0xFF007CF9);
+                g.fillRect(Global.ScreenWidth/2 - 73, Global.ScreenHeight/2 - 32, 160, 50);
+                Fnt.DrawString(g, Fnt.Fnt_MildHeading, LoadingStrings[(int)(loadStringCounter/8)], Global.ScreenWidth/2 - 64, Global.ScreenHeight/2-18);
             }
         }
     }
