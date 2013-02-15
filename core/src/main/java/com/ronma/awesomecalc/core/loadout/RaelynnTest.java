@@ -13,7 +13,7 @@ public class RaelynnTest extends NautResDefinitions {
         _fullPortrait = "images/raelynn/spr_raelynn_fullPortrait.png";
         _iconPortrait = "images/raelynn/spr_raelynn_iconPortrait.png";
         
-        _ability1Icon = "images/raelynn/spr_raelynn_timeRift.png";
+        _ability1Icon = new LoadoutItemDefinition("images/raelynn/spr_raelynn_timeRift.png", "Time Rift", "Time field that slows down enemies", 1);
         _ability1 = new LoadoutItemDefinition[] {
             new LoadoutItemDefinition("images/raelynn/spr_raelynn_timeRift_higgsGrenade.png", "Higgs Grenade", "---Higgs Desc---", 2),
             new LoadoutItemDefinition("images/raelynn/spr_raelynn_timeRift_nuclearWarhead.png", "Nuclear Warhead", "---Nuke---", 3),
@@ -23,7 +23,7 @@ public class RaelynnTest extends NautResDefinitions {
             new LoadoutItemDefinition("images/raelynn/spr_raelynn_timeRift_121GigawattBattery.png", "1.21 Gigawatt Battery", "---batteries---", 1)
         };
         
-        _ability2Icon = "images/raelynn/spr_raelynn_snipe.png";
+        _ability2Icon = new LoadoutItemDefinition("images/raelynn/spr_raelynn_snipe.png", "Snipe", "35 damage hitscan snipe with knockback", 1);
         _ability2 = new LoadoutItemDefinition[] {
             new LoadoutItemDefinition("images/raelynn/spr_raelynn_snipe_pumpRifle.png", "Pump Rifle", "---+10 dmg---", 3),
             new LoadoutItemDefinition("images/raelynn/spr_raelynn_snipe_cassetteDeckMagazine.png", "Cassette Deck Magazine", "---Cooldown reduction---", 2),

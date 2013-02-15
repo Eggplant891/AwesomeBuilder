@@ -43,8 +43,9 @@ public class AwesomeCalc implements Game {
     Global.m_screenHandler = new ScreenHandler();
     Fnt.Init();
     
-    bgImage = Global.m_assetManager.getImage("images/bg.png");
+    //bgImage = Global.m_assetManager.getImage("images/bg.png");
     LoadoutRow.rowBG = Global.m_assetManager.getImage("images/spr_loadoutRowBG.png");
+    LoadoutRow.rowClosedBG = Global.m_assetManager.getImage("images/spr_loadoutRowBGUnpurchased.png");
     Global.m_graphics.setSize(Global.ScreenWidth, Global.ScreenHeight);
     bgLayer = graphics().createSurfaceLayer(Global.ScreenWidth, Global.ScreenHeight);
     bgSurface = bgLayer.surface();
@@ -65,7 +66,7 @@ public class AwesomeCalc implements Game {
                 System.out.println("Failed to load all assets. ;(");
             }
         });
-    watcher.add(bgImage);
+    //watcher.add(bgImage);
     watcher.start();
     }
     public int numSelected = 0;
@@ -79,8 +80,9 @@ public class AwesomeCalc implements Game {
     public void paint(float alpha) {
         if (watcherFinished) {
             bgSurface.clear();
+            bgSurface.setFillColor(0xFF001E3D);
             bgSurface.fillRect(0, 0, bgLayer.width(), bgLayer.height());
-            bgSurface.drawImage(bgImage, -1, -1);
+            //bgSurface.drawImage(bgImage, -1, -1);
         }
         Global.m_screenHandler.Paint(bgSurface);
         Fnt.DrawString(bgSurface, Fnt.Fnt_Standard, Global.m_version, 0, Global.ScreenHeight - 16);

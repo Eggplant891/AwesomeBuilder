@@ -8,9 +8,9 @@ import com.ronma.awesomecalc.nauts.Upgrade;
 public class NautResDefinitions {
     public NautResources res;
     protected LoadoutItemDefinition [] _ability1;
-    protected String _ability1Icon;
+    protected LoadoutItemDefinition _ability1Icon;
     protected LoadoutItemDefinition [] _ability2;
-    protected String _ability2Icon;
+    protected LoadoutItemDefinition _ability2Icon;
     protected LoadoutItemDefinition [] _autoAttack;
     protected String _autoAttackIcon;
     protected LoadoutItemDefinition [] _utility;
@@ -70,7 +70,7 @@ public class NautResDefinitions {
 
 
 
-	public LoadoutItemDefinition GetItemDefinition(LoadoutRowType type, int col) {
+    public LoadoutItemDefinition GetItemDefinition(LoadoutRowType type, int col) {
         if (col < 0 || col > NautResources.NumSlotsPerAbility) return null;
         switch (type) {
             case ABILITY1:
@@ -88,6 +88,23 @@ public class NautResDefinitions {
         return null;
     }
     
+    public LoadoutItemDefinition GetAbilityDefinition(LoadoutRowType type) {
+        switch (type) {
+            case ABILITY1:
+                return _ability1Icon;
+                
+            case ABILITY2:
+                return _ability2Icon;
+            
+            case AUTO_ATTACK:
+                return null;
+            
+            case UTILITY:
+                return null;
+        }
+        return null;
+    }
+    
     public String GetNautName() {
         return _nautFullName;
     }
@@ -96,8 +113,8 @@ public class NautResDefinitions {
         res.SetPortrait(Global.m_assetManager.getImage(_fullPortrait));
         res.SetPortraitIcon(Global.m_assetManager.getImage(_iconPortrait));
         
-        res.SetAbility1Icon(Global.m_assetManager.getImage(_ability1Icon));
-        res.SetAbility2Icon(Global.m_assetManager.getImage(_ability2Icon));
+        res.SetAbility1Icon(_ability1Icon.LoadImage());
+        res.SetAbility2Icon(_ability2Icon.LoadImage());
         res.SetAutoAttackIcon(Global.m_assetManager.getImage(_autoAttackIcon));
         res.SetUtilityIcon(Global.m_assetManager.getImage(_utilityIcon));
         

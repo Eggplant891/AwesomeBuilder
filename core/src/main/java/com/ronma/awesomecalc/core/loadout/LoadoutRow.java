@@ -11,9 +11,9 @@ public class LoadoutRow {
     private Image rowIcon;
     private ArrayList<LoadoutItem> selectedItems;
     private LoadoutRowType _type;
-    private Ability _baseAbility;
+    private LoadoutItem abilityBtn;
     
-    public static Image rowBG;
+    public static Image rowBG, rowClosedBG;
     
     public static final int xOffset = 16;
     public static int yOffset = 90 + 16;
@@ -29,6 +29,20 @@ public class LoadoutRow {
     
     public LoadoutRow(LoadoutRowType type, NautResDefinitions resDef) {
         selectedItems = new ArrayList<LoadoutItem>();
+        if (type == LoadoutRowType.ABILITY1 || type == LoadoutRowType.ABILITY2) {
+            abilityBtn = new LoadoutItem(-1, resDef.GetAbilityDefinition(type), xOffset, yOffset + (type.ordinal() * (64 + ySpacing))) {
+                @Override
+                public void Clicked() {
+                    Toggle();
+                    UpdateSelectedItems();
+                }
+                
+                @Override
+                public void MouseHover() {
+                    rowSelection = this;
+                }
+            };
+        }
         btns = new LoadoutItem[NautResources.NumSlotsPerAbility];
         rowIcon = resDef.res.GetAbilityIcon(type);
         _type = type;
@@ -83,17 +97,30 @@ public class LoadoutRow {
     
     public void Update(float delta) {
         rowSelection = null;
-        for (int i = 0; i < NautResources.NumSlotsPerAbility; i++) {
-            btns[i].Update(delta);
+        if (abilityBtn != null) abilityBtn.Update(delta);
+        
+        if (abilityBtn == null || abilityBtn._state == true) {
+            for (int i = 0; i < NautResources.NumSlotsPerAbility; i++) {
+                btns[i].Update(delta);
+            }
         }
         if (deniedTimer > 0) deniedTimer--;
     }
     
     public void Paint(Surface g) {
-        g.drawImage(rowBG, xOffset - 4, yOffset + (_type.ordinal() * (64 + ySpacing)) - 3);
-        g.drawImage(rowIcon, xOffset, yOffset + (_type.ordinal() * (64 + ySpacing)));
-        for (int i = 0; i < NautResources.NumSlotsPerAbility; i++) {
-            btns[i].Paint(g);
+        if (abilityBtn == null || abilityBtn._state == true) {
+            g.drawImage(rowBG, xOffset - 3, yOffset + (_type.ordinal() * (64 + ySpacing)) - 3);
+        }
+        else {
+            g.drawImage(rowClosedBG, xOffset - 3, yOffset + (_type.ordinal() * (64 + ySpacing)) - 3);
+        }
+        if (abilityBtn != null) abilityBtn.Paint(g);
+        else g.drawImage(rowIcon, xOffset, yOffset + (_type.ordinal() * (64 + ySpacing)));
+        
+        if (abilityBtn == null || abilityBtn._state == true) {
+            for (int i = 0; i < NautResources.NumSlotsPerAbility; i++) {
+                btns[i].Paint(g);
+            }
         }
         /*for (LoadoutItem l : selectedItems) {
             l.GetSprite().Draw(g, 550 + 64 * i, yOffset + (_type.ordinal() * 64), 1.0f, 1.0f);

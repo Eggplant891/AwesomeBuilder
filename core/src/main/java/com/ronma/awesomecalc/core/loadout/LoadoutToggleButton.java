@@ -10,6 +10,7 @@ public class LoadoutToggleButton extends GameObject {
     public LoadoutToggleButton(Image img, int id, int x, int y, boolean startsOn) {
         super(Sprite.CreateAnimatedSprite(img, 2, 1, 1, 2, 0), x, y);
         _state = startsOn;
+        _id = id;
     }
     
     public int GetSlotID() {

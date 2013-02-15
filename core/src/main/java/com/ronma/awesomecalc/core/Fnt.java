@@ -11,7 +11,7 @@ public class Fnt {
         Fnt_MildHeading = Global.m_graphics.createFont("Courier New", Font.Style.BOLD, 24);
     }
     public static void DrawString(Surface g, Font f, String text, int x, int y) {
-        TextFormat format = new TextFormat().withFont(f);
+        TextFormat format = new TextFormat().withFont(f).withTextColor(0xFFFFFFFF);
         TextLayout layout = Global.m_graphics.layoutText(text, format);
         DrawString(g, layout, x, y);
     }

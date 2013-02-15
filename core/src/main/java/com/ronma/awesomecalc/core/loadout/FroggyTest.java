@@ -12,7 +12,7 @@ public class FroggyTest extends NautResDefinitions {
         _fullPortrait = "images/froggyG/spr_froggyG_fullPortrait.png";
         _iconPortrait = "images/froggyG/spr_froggyG_iconPortrait.png";
         
-        _ability1Icon = "images/froggyG/spr_froggyG_splashDash.png";
+        _ability1Icon = new LoadoutItemDefinition("images/froggyG/spr_froggyG_splashDash.png", "Splash Dash", "25 damage dash. Invulnerable during dash", 1);
         _ability1 = new LoadoutItemDefinition[] {
             new LoadoutItemDefinition("images/froggyG/spr_froggyG_splashDash_hydroSplash.png", "Hydro Splash", "---Hydro Splash Desc---", 3),
             new LoadoutItemDefinition("images/froggyG/spr_froggyG_splashDash_iceCubes.png", "Ice Cubes", "---Ice Cubes---", 2),
@@ -22,7 +22,7 @@ public class FroggyTest extends NautResDefinitions {
             new LoadoutItemDefinition("images/froggyG/spr_froggyG_splashDash_hydroSmash.png", "Hydro Smash", "---Hydro Smash---", 1)
         };
         
-        _ability2Icon = "images/froggyG/spr_froggyG_tornado.png";
+        _ability2Icon = new LoadoutItemDefinition("images/froggyG/spr_froggyG_tornado.png", "Tornado Move", "16 damage x 4 over 2 seconds.", 1);
         _ability2 = new LoadoutItemDefinition[] {
             new LoadoutItemDefinition("images/froggyG/spr_froggyG_tornado_boomBox.png", "Boom Box", "---Boom Box---", 2),
             new LoadoutItemDefinition("images/froggyG/spr_froggyG_tornado_turboTape.png", "Turbo Tape", "---Turbo Tape---", 2),
