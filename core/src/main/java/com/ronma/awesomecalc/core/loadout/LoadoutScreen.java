@@ -64,6 +64,8 @@ public class LoadoutScreen extends Screen {
     
     @Override
     protected void ScreenPaint(Surface g) {
+        g.setFillColor(0xFFFFFFFF);
+        g.fillRect(9, 9, 82, 82);
         g.drawImage(m_res.res.GetPortraitIcon(), 10, 10);
         for (LoadoutRow r : l_row) {
             r.Paint(g);
@@ -72,7 +74,8 @@ public class LoadoutScreen extends Screen {
         Fnt.DrawString(g, Fnt.Fnt_BigHeading, m_res.GetNautName(), 100, 40);
         if (selectedButton != null) {
             spr_selectionBracket.Draw(g, selectedButton.GetX() - 7, selectedButton.GetY() - 7, 1f, 1f);
-            Fnt.DrawString(g, Fnt.Fnt_BigHeading, selectedButton._itemName, 300, 50);
+            Fnt.DrawString(g, Fnt.Fnt_MildHeading, selectedButton.GetItemName(), 524, 100);
+            Fnt.DrawString(g, Fnt.Fnt_Standard, selectedButton.GetItemDescription(), 524, 132);
         }
     }
     
