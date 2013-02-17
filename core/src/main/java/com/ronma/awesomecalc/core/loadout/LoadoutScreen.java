@@ -50,6 +50,15 @@ public class LoadoutScreen extends Screen {
         //spr_selectionDenied = Sprite.CreateStaticSprite(selectionDenied);
     }
     
+    public int GetTotalCost() {
+        int total = 0;
+        for (LoadoutRow r : l_row) {
+            total += r.GetTotalCost();
+        }
+        
+        return total;
+    }
+    
     @Override
     protected void ScreenUpdate(float delta) {
         for (LoadoutRow r : l_row) {
@@ -77,6 +86,8 @@ public class LoadoutScreen extends Screen {
             Fnt.DrawString(g, Fnt.Fnt_MildHeading, selectedButton.GetItemName(), 524, 100);
             Fnt.DrawString(g, Fnt.Fnt_Standard, selectedButton.GetItemDescription(), 524, 132);
         }
+        
+        Fnt.DrawString(g, Fnt.Fnt_Standard, "TOTAL COST: " + GetTotalCost() + " solar", 524, 192);
     }
     
 }

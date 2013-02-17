@@ -11,6 +11,7 @@ public class LoadoutItem extends LoadoutToggleButton {
     private Rectangle _partialRect;
     private int _numStages;
     private int _stagesSelected;
+    private int _totalCost;
     
     public LoadoutItem(int id, LoadoutItemDefinition l, int x, int y) {
         super(l.GetImage(), id, x, y, false);
@@ -20,7 +21,7 @@ public class LoadoutItem extends LoadoutToggleButton {
         _numStages = _def.GetTotalStages();
         _stagesSelected = 0;
         _partialRect = new Rectangle(0,0,_sprite.GetFrameWidth(),0);
-        
+        _totalCost = 0;
         if (_numStages > 1) _itemNameQuant = _itemName + " (" + _stagesSelected + "/" + _numStages + ")";
         else _itemNameQuant = _itemName;
     }
@@ -35,6 +36,10 @@ public class LoadoutItem extends LoadoutToggleButton {
     
     public String GetItemDescription() {
         return _itemDescription;
+    }
+    
+    public int GetTotalCost() {
+        return _totalCost;
     }
     
     public void UpdatePartialRect() {
@@ -58,6 +63,7 @@ public class LoadoutItem extends LoadoutToggleButton {
         }
         UpdatePartialRect();
         if (_numStages > 1) _itemNameQuant = _itemName + " (" + _stagesSelected + "/" + _numStages + ")";
+        _totalCost = _def.GetCostPerStage() * _stagesSelected;
     }
     
     @Override

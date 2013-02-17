@@ -9,12 +9,14 @@ public class LoadoutItemDefinition {
     String _itemName;
     String _itemDescription;
     int _stages;
+    int _cost;
     
-    public LoadoutItemDefinition(String imgPath, String name, String desc, int stages) {
+    public LoadoutItemDefinition(String imgPath, String name, String desc, int costPerStage, int stages) {
         _imagePath = imgPath;
         _itemName = name;
         _itemDescription = desc;
         _stages = stages;
+        _cost = costPerStage;
     }
     
     public String GetImagePath   () {
@@ -23,6 +25,14 @@ public class LoadoutItemDefinition {
     
     public String GetItemName() {
         return _itemName;
+    }
+    
+    public int GetCostPerStage() {
+        return _cost;
+    }
+    
+    public int GetTotalCost() {
+        return _cost * _stages;
     }
     
     public Image LoadImage() {

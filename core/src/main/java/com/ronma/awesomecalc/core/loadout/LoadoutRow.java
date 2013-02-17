@@ -73,6 +73,18 @@ public class LoadoutRow {
         }
     }
     
+    public int GetTotalCost() {
+        int total = 0;
+        if (abilityBtn == null || abilityBtn._state == true) {
+            for (LoadoutItem l : selectedItems) {
+                total += l.GetTotalCost();
+            }
+            
+            if (abilityBtn != null) total += abilityBtn.GetTotalCost();
+        }
+        return total;
+    }
+    
     public void SelectionDenied(LoadoutToggleButton l) {
         targetX = l.GetX();
         targetY = l.GetY();
