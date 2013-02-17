@@ -20,6 +20,8 @@ import com.ronma.awesomecalc.core.loadout.FroggyTest;
 import com.ronma.awesomecalc.nauts.Naut;
 import com.ronma.awesomecalc.nauts.util.NautsUtil;
 
+import com.ronma.awesomecalc.core.loadout.abilities.AutoAttack;
+
 import playn.core.Font;
 
 public class AwesomeCalc implements Game {
@@ -42,6 +44,11 @@ public class AwesomeCalc implements Game {
     Global.m_graphics = graphics();
     Global.m_screenHandler = new ScreenHandler();
     Fnt.Init();
+    
+    AutoAttack a = AutoAttack.Create("Bolt .45 Fish Gun", 6, 133.3333f, 0, 1);
+    a.AddShot(1, 12, 1, 0, 1, 0, 133.3333f);
+    a.AddShot(2, 12, 1, 0, 1, 0, 133.3333f);
+    System.out.println(a.ShotsToString());
     
     //bgImage = Global.m_assetManager.getImage("images/bg.png");
     LoadoutRow.rowBG = Global.m_assetManager.getImage("images/spr_loadoutRowBG.png");
