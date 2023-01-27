@@ -1,4 +1,4 @@
-package com.ronma.awesomecalc.core.loadout.abilities;
+package com.ronma.awesomecalc.core.loadout;
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.HashMap;

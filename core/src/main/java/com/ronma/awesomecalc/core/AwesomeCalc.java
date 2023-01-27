@@ -20,7 +20,7 @@ import com.ronma.awesomecalc.core.loadout.FroggyTest;
 import com.ronma.awesomecalc.nauts.Naut;
 import com.ronma.awesomecalc.nauts.util.NautsUtil;
 
-import com.ronma.awesomecalc.core.loadout.abilities.AutoAttack;
+import com.ronma.awesomecalc.core.loadout.AutoAttack;
 
 import playn.core.Font;
 

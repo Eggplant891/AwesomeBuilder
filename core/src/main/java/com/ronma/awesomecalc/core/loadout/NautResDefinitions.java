@@ -8,8 +8,10 @@ import com.ronma.awesomecalc.nauts.Upgrade;
 public class NautResDefinitions {
     public NautResources res;
     protected LoadoutItemDefinition [] _ability1;
+    protected StandardAbility _abilityDef1;
     protected LoadoutItemDefinition _ability1Icon;
     protected LoadoutItemDefinition [] _ability2;
+    public StandardAbility _abilityDef2;
     protected LoadoutItemDefinition _ability2Icon;
     protected LoadoutItemDefinition [] _autoAttack;
     protected String _autoAttackIcon;

@@ -87,7 +87,7 @@ public class LoadoutScreen extends Screen {
             Fnt.DrawString(g, Fnt.Fnt_Standard, selectedButton.GetItemDescription(), 524, 132);
         }
         
-        Fnt.DrawString(g, Fnt.Fnt_Standard, "TOTAL COST: " + GetTotalCost() + " solar", 524, 192);
+        Fnt.DrawString(g, Fnt.Fnt_MildHeading, "TOTAL COST: " + GetTotalCost() + " solar", 524, 380);
     }
     
 }

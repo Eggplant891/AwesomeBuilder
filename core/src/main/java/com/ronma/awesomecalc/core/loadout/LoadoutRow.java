@@ -2,7 +2,6 @@ package com.ronma.awesomecalc.core.loadout;
 
 import playn.core.Image;
 import com.ronma.awesomecalc.core.loadout.NautResources;
-import com.ronma.awesomecalc.core.loadout.abilities.*;
 import playn.core.Surface;
 import java.util.ArrayList;
 

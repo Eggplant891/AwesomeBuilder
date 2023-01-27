@@ -12,7 +12,13 @@ public class FroggyTest extends NautResDefinitions {
         _fullPortrait = "images/froggyG/spr_froggyG_fullPortrait.png";
         _iconPortrait = "images/froggyG/spr_froggyG_iconPortrait.png";
         
-        _ability1Icon = new LoadoutItemDefinition("images/froggyG/spr_froggyG_splashDash.png", "Splash Dash", "25 damage dash. Invulnerable during dash", 135, 1);
+        AbilityStats a = new AbilityStats();
+        
+        a._endDamage = 25;
+        a._shotsPerAttack = 1;
+        a._cooldownTime = 8;
+        
+        _ability1Icon = new LoadoutItemDefinition("images/froggyG/spr_froggyG_splashDash.png", "Splash Dash", a.ToString(), 135, 1);
         _ability1 = new LoadoutItemDefinition[] {
             new LoadoutItemDefinition("images/froggyG/spr_froggyG_splashDash_hydroSplash.png", "Hydro Splash", "---Hydro Splash Desc---", 140, 3),
             new LoadoutItemDefinition("images/froggyG/spr_froggyG_splashDash_iceCubes.png", "Ice Cubes", "---Ice Cubes---", 160, 2),
@@ -22,7 +28,19 @@ public class FroggyTest extends NautResDefinitions {
             new LoadoutItemDefinition("images/froggyG/spr_froggyG_splashDash_hydroSmash.png", "Hydro Smash", "---Hydro Smash---", 315, 1)
         };
         
-        _ability2Icon = new LoadoutItemDefinition("images/froggyG/spr_froggyG_tornado.png", "Tornado Move", "16 damage x 4 over 2 seconds.", 135, 1);
+        a = new AbilityStats();
+        
+        a._damage = 16;
+        a._shotsPerAttack = 1;
+        a._cooldownTime = 11;
+        a._durationTime = 2;
+        a._attackSpeed = 120;
+        
+        _abilityDef2 = new StandardAbility("Tornado Move", a);
+        _ability2Icon = new LoadoutItemDefinition("images/froggyG/spr_froggyG_tornado.png", _abilityDef2.GetName(),
+                _abilityDef2.Stats.ToString(),
+                135, 1);
+        
         _ability2 = new LoadoutItemDefinition[] {
             new LoadoutItemDefinition("images/froggyG/spr_froggyG_tornado_boomBox.png", "Boom Box", "---Boom Box---", 220, 2),
             new LoadoutItemDefinition("images/froggyG/spr_froggyG_tornado_turboTape.png", "Turbo Tape", "---Turbo Tape---", 140, 2),
